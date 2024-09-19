@@ -32,7 +32,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         emailJava = new javax.swing.JTextField();
         senhaJava = new javax.swing.JPasswordField();
         txtSenha = new javax.swing.JLabel();
-        imageJava = new javax.swing.JLabel();
         entrarJava = new javax.swing.JButton();
         voltarJava = new javax.swing.JButton();
         bemvindoJava = new javax.swing.JLabel();
@@ -68,10 +67,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         txtSenha.setText("Senha:");
         jPanel1.add(txtSenha);
         txtSenha.setBounds(150, 180, 37, 16);
-
-        imageJava.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icons8-logo-java-coffee-cup-144.png"))); // NOI18N
-        jPanel1.add(imageJava);
-        imageJava.setBounds(349, 73, 0, 0);
 
         entrarJava.setBackground(new java.awt.Color(0, 204, 204));
         entrarJava.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -168,7 +163,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton cadastroJava;
     private javax.swing.JTextField emailJava;
     private javax.swing.JButton entrarJava;
-    private javax.swing.JLabel imageJava;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
