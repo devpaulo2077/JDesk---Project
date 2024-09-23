@@ -3,18 +3,69 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package TeladeLogin;
+import javax.swing.JLabel;
+import classes.Usuario;
+import javax.swing.JOptionPane;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  *
  * @author renan.losantos
  */
-public class TelaPrincipal extends javax.swing.JFrame {
+public class TelaLogin extends javax.swing.JFrame {
 
+    private Boolean usuarioValido;
+    /*
+    public JLabel getTxtEmail() {
+        return txtEmail;
+    }
+
+    public void setTxtEmail(JLabel txtEmail) {
+        this.txtEmail = txtEmail;
+    }
+
+    public JLabel getTxtSenha() {
+        return txtSenha;
+    }
+
+    public void setTxtSenha(JLabel txtSenha) {
+        this.txtSenha = txtSenha;
+    }
+*/
+    
     /**
      * Creates new form TelaPrincipal
      */
-    public TelaPrincipal() {
+    public TelaLogin() {
         initComponents();
+        entrarJava.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                Usuario usuario = new Usuario();
+                System.out.println(emailJava.getText());
+                
+                usuario.setEmail(emailJava.getText());
+                usuario.setSenha(senhaJava.getText());
+        
+                if("".equals(usuario.getEmail())){
+                    JOptionPane.showMessageDialog(null, "Campo e-mail precisa ser informado!!!", "Atenção", JOptionPane.ERROR_MESSAGE);
+                    emailJava.grabFocus();
+                }
+                else if("".equals(usuario.getSenha())){
+                    JOptionPane.showMessageDialog(null, "Campo senha precisa ser informado!!!", "Atenção", JOptionPane.ERROR_MESSAGE);
+                    senhaJava.grabFocus();
+                }
+                else{
+                    usuarioValido = usuario.VerificarUsuario(usuario.getEmail(), usuario.getSenha());
+                    if(usuarioValido == true){
+                        JOptionPane.showMessageDialog(null, "Usuario valido em nossa base!!!", "Atenção", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                else{
+                    JOptionPane.showMessageDialog(null, "Usuario invalido ou inexistente!!!", "Atenção", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+                }
+            });
     }
 
     /**
@@ -120,9 +171,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_emailJavaActionPerformed
 
     private void entrarJavaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entrarJavaActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here           
     }//GEN-LAST:event_entrarJavaActionPerformed
-
+    public void abrirTela(){
+        new TelaLogin().setVisible(true);
+    }
     /**
      * @param args the command line arguments
      */
@@ -140,20 +193,21 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaPrincipal().setVisible(true);
+                new TelaLogin().setVisible(true);
             }
         });
     }
