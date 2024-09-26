@@ -15,6 +15,7 @@ public class cadastroJava extends javax.swing.JFrame {
      */
     public cadastroJava() {
         initComponents();
+        
     }
 
     /**
@@ -105,10 +106,10 @@ public class cadastroJava extends javax.swing.JFrame {
         jPanel1.add(jButton2);
         jButton2.setBounds(264, 290, 89, 23);
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logo java  48x48.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/logo java  48x48.png"))); // NOI18N
         jLabel3.setText("jLabel3");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(387, 292, 43, 48);
+        jLabel3.setBounds(387, 292, 43, 40);
 
         jLabel2.setText("Nome Completo");
         jPanel1.add(jLabel2);
@@ -161,7 +162,9 @@ public class cadastroJava extends javax.swing.JFrame {
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButton1ActionPerformed
-
+    public void abrirTela(){
+       new cadastroJava().setVisible(true);
+    }
     /**
      * @param args the command line arguments
      */

@@ -167,13 +167,13 @@
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/images/logo java  48x48.png"/>
+              <Image iconType="3" name="/imagens/logo java  48x48.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="jLabel3"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="387" y="292" width="43" height="-1"/>
+              <AbsoluteConstraints x="387" y="292" width="43" height="40"/>
             </Constraint>
           </Constraints>
         </Component>

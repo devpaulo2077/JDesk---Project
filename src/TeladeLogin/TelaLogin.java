@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package TeladeLogin;
+import TeladeCadastro.cadastroJava;
 import javax.swing.JLabel;
 import classes.Usuario;
 import javax.swing.JOptionPane;
@@ -60,12 +61,21 @@ public class TelaLogin extends javax.swing.JFrame {
                     if(usuarioValido == true){
                         JOptionPane.showMessageDialog(null, "Usuario valido em nossa base!!!", "Atenção", JOptionPane.INFORMATION_MESSAGE);
                     }
-                else{
-                    JOptionPane.showMessageDialog(null, "Usuario invalido ou inexistente!!!", "Atenção", JOptionPane.ERROR_MESSAGE);
+                     else{
+                        JOptionPane.showMessageDialog(null, "Usuario invalido ou inexistente!!!", "Atenção", JOptionPane.ERROR_MESSAGE);
                     }
                 }
                 }
             });
+        
+        cadastroJava.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                cadastroJava telaDeCadastro = new cadastroJava();
+                telaDeCadastro.abrirTela();
+                dispose();
+            }
+            });
+        
     }
 
     /**
@@ -128,13 +138,13 @@ public class TelaLogin extends javax.swing.JFrame {
             }
         });
         jPanel1.add(entrarJava);
-        entrarJava.setBounds(220, 280, 120, 34);
+        entrarJava.setBounds(220, 270, 120, 34);
 
         voltarJava.setBackground(new java.awt.Color(255, 102, 102));
         voltarJava.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         voltarJava.setText("Voltar");
         jPanel1.add(voltarJava);
-        voltarJava.setBounds(230, 330, 93, 34);
+        voltarJava.setBounds(230, 310, 93, 34);
 
         bemvindoJava.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         bemvindoJava.setText("Bem vindo usuario faça login com sua conta ou cadastra-se!");
@@ -145,7 +155,7 @@ public class TelaLogin extends javax.swing.JFrame {
         cadastroJava.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         cadastroJava.setText("Cadastrar");
         jPanel1.add(cadastroJava);
-        cadastroJava.setBounds(220, 240, 120, 34);
+        cadastroJava.setBounds(220, 230, 120, 34);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icons8-logo-java-coffee-cup-144.png"))); // NOI18N
         jLabel1.setText("jLabel1");
@@ -156,11 +166,15 @@ public class TelaLogin extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();

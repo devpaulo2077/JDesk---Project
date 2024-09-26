@@ -87,6 +87,7 @@ public class Usuario {
         }catch(Exception ec){
             System.out.println("Erro ao verificar usuario" + ec.getMessage());
         }
+        
         return resultUsuario;
     }
     public Boolean CadastrarUsuario(String email, String senha, String cpf, String data_nasc,String estatus, String tipo){
@@ -96,6 +97,8 @@ public class Usuario {
             banco.stmt = banco.con.createStatement();    
             banco.stmt.execute("INSERT INTO usuarios (email, senha, cpf, data_nasc,estatus,tipo) " + "VALUES ('" + email + "','" + senha + "','" + cpf + "','" + data_nasc + "','" + estatus + "','" + tipo + "')");
             resultCadastro = true;
+            System.out.println("Usuario inserido com sucesso!");
+            banco.FecharConexao();
         }catch(Exception ec){
             resultCadastro = false;
             System.out.println("erro ao inserir usuario ao banco de dados " + ec.getMessage());
