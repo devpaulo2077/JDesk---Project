@@ -1,18 +1,30 @@
 package classes;
 
 public class Usuario {
+   private String nome; 
+
    private String email; 
    private String senha;
    private String cpf;
    private String estatus;
-
+ 
+   
    private String data_nasc;
    private String tipo;
    //private String chamados;  
 
+
    private boolean resultUsuario;
    private boolean resultCadastro;
    
+    
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
     public String getEmail() {
         return email;
     }
@@ -60,7 +72,19 @@ public class Usuario {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
+    
+    public Boolean VerificarSenha(String senhaP, String senhaS){
+        Boolean resultSenha;
+        if(senhaP == senhaS){
+            resultSenha = true; 
 
+        }else{
+            resultSenha = false; 
+            
+        }
+        return resultSenha;
+    }
+    
     //public String getChamados() {
     //    return chamados;
     //}

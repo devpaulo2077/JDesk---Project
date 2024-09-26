@@ -30,7 +30,12 @@ public class cadastroJava extends javax.swing.JFrame {
                 System.out.println(Email.getText());
                 
                 usuario.setEmail(Email.getText());
-                usuario.setSenha(Senha.getText());
+                
+                String validasenha = null;
+                String Psenha = Senha.getText();
+                String Csenha = ConfirmarSenha.getText();
+                
+                usuario.setSenha(validasenha);
                 usuario.setCpf(CPF.getText());
                 usuario.setData_nasc(DataDeNascimento.getText());
                 String tipo = "";
@@ -49,17 +54,21 @@ public class cadastroJava extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Campo e-mail precisa ser informado!!!", "Atenção", JOptionPane.ERROR_MESSAGE);
                     Email.grabFocus();
                 }
-                else if("".equals(usuario.getSenha())){
+                else if("".equals(Senha.getText())){
                     JOptionPane.showMessageDialog(null, "Campo senha precisa ser informado!!!", "Atenção", JOptionPane.ERROR_MESSAGE);
                     Senha.grabFocus();
                 }
-                else if("".equals(usuario.getData_nasc())){
-                    JOptionPane.showMessageDialog(null, "Campo data de nascimento precisa ser informado!!!", "Atenção", JOptionPane.ERROR_MESSAGE);
-                    DataDeNascimento.grabFocus();
+                else if("".equals(usuario.getSenha())){
+                    JOptionPane.showMessageDialog(null, "Campo confirmar senha precisa ser informado!!!", "Atenção", JOptionPane.ERROR_MESSAGE);
+                    ConfirmarSenha.grabFocus();
                 }
                 else if("".equals(usuario.getCpf())){
                     JOptionPane.showMessageDialog(null, "Campo cpf precisa ser informado!!!", "Atenção", JOptionPane.ERROR_MESSAGE);
                     CPF.grabFocus();
+                }
+                else if("".equals(usuario.getData_nasc())){
+                    JOptionPane.showMessageDialog(null, "Campo data de nascimento precisa ser informado!!!", "Atenção", JOptionPane.ERROR_MESSAGE);
+                    DataDeNascimento.grabFocus();
                 }
                 else if("".equals(usuario.getTipo())){
                     JOptionPane.showMessageDialog(null, "Campo tipo precisa ser informado!!!", "Atenção", JOptionPane.ERROR_MESSAGE);
