@@ -28,7 +28,6 @@ public class cadastroJava extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        CPF = new javax.swing.JFormattedTextField();
         NomeComplet = new javax.swing.JFormattedTextField();
         Email = new javax.swing.JFormattedTextField();
         DataDeNascimento = new javax.swing.JFormattedTextField();
@@ -46,6 +45,7 @@ public class cadastroJava extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        jFormattedTextField1 = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -53,8 +53,6 @@ public class cadastroJava extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setMinimumSize(new java.awt.Dimension(500, 300));
         jPanel1.setLayout(null);
-        jPanel1.add(CPF);
-        CPF.setBounds(281, 53, 121, 22);
         jPanel1.add(NomeComplet);
         NomeComplet.setBounds(40, 53, 126, 22);
 
@@ -135,6 +133,14 @@ public class cadastroJava extends javax.swing.JFrame {
         jPanel1.add(jLabel8);
         jLabel8.setBounds(40, 212, 110, 16);
 
+        try {
+            jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jPanel1.add(jFormattedTextField1);
+        jFormattedTextField1.setBounds(280, 50, 160, 22);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -201,7 +207,6 @@ public class cadastroJava extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JFormattedTextField CPF;
     private javax.swing.JFormattedTextField ConfirmarSenha;
     private javax.swing.JFormattedTextField DataDeNascimento;
     private javax.swing.JFormattedTextField Email;
@@ -209,6 +214,7 @@ public class cadastroJava extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField Senha;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
