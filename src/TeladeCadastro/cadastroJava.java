@@ -4,18 +4,85 @@
  */
 package TeladeCadastro;
 
+import TeladeLogin.TelaLogin;
+import classes.Usuario;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
+
+
 /**
  *
  * @author Caique.sbrito1
  */
 public class cadastroJava extends javax.swing.JFrame {
 
+    private Boolean usuarioCadastrado;
+    
     /**
      * Creates new form cadastroJava
      */
     public cadastroJava() {
         initComponents();
+        jButton2.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                Usuario usuario = new Usuario();
+                System.out.println(Email.getText());
+                
+                usuario.setEmail(Email.getText());
+                usuario.setSenha(Senha.getText());
+                usuario.setCpf(CPF.getText());
+                usuario.setData_nasc(DataDeNascimento.getText());
+                String tipo = "";
+               if (jRadioButton1.isSelected() || jRadioButton2.isSelected()) {
+                    if (jRadioButton1.isSelected()) {
+                        tipo = "T";
+                    }
+                    if (jRadioButton2.isSelected()) {
+                        tipo = "F";
+                    }
+                }
+                usuario.setTipo(tipo);
+                usuario.setEstatus("A");
         
+                if("".equals(usuario.getEmail())){
+                    JOptionPane.showMessageDialog(null, "Campo e-mail precisa ser informado!!!", "Atenção", JOptionPane.ERROR_MESSAGE);
+                    Email.grabFocus();
+                }
+                else if("".equals(usuario.getSenha())){
+                    JOptionPane.showMessageDialog(null, "Campo senha precisa ser informado!!!", "Atenção", JOptionPane.ERROR_MESSAGE);
+                    Senha.grabFocus();
+                }
+                else if("".equals(usuario.getData_nasc())){
+                    JOptionPane.showMessageDialog(null, "Campo data de nascimento precisa ser informado!!!", "Atenção", JOptionPane.ERROR_MESSAGE);
+                    DataDeNascimento.grabFocus();
+                }
+                else if("".equals(usuario.getCpf())){
+                    JOptionPane.showMessageDialog(null, "Campo cpf precisa ser informado!!!", "Atenção", JOptionPane.ERROR_MESSAGE);
+                    CPF.grabFocus();
+                }
+                else if("".equals(usuario.getTipo())){
+                    JOptionPane.showMessageDialog(null, "Campo tipo precisa ser informado!!!", "Atenção", JOptionPane.ERROR_MESSAGE);
+                   
+                }
+                else{
+                    usuarioCadastrado = usuario.CadastrarUsuario(usuario.getEmail(), usuario.getSenha(), usuario.getCpf(), usuario.getData_nasc(),usuario.getEstatus() ,usuario.getTipo());
+                    if(usuarioCadastrado == true){
+                        JOptionPane.showMessageDialog(null, "Usuario cadastrado em nossa base!!!", "Atenção", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                     else{
+                        JOptionPane.showMessageDialog(null, "Erro ao cadastrar!!!", "Atenção", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+                }
+            });
+        jButton1.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+               TelaLogin telaLogin = new TelaLogin();
+               telaLogin.abrirTela();
+                dispose();
+            }
+            });
     }
 
     /**
@@ -29,7 +96,6 @@ public class cadastroJava extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         CPF = new javax.swing.JFormattedTextField();
-        NomeComplet = new javax.swing.JFormattedTextField();
         Email = new javax.swing.JFormattedTextField();
         DataDeNascimento = new javax.swing.JFormattedTextField();
         Senha = new javax.swing.JFormattedTextField();
@@ -40,7 +106,6 @@ public class cadastroJava extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -54,9 +119,7 @@ public class cadastroJava extends javax.swing.JFrame {
         jPanel1.setMinimumSize(new java.awt.Dimension(500, 300));
         jPanel1.setLayout(null);
         jPanel1.add(CPF);
-        CPF.setBounds(281, 53, 121, 22);
-        jPanel1.add(NomeComplet);
-        NomeComplet.setBounds(40, 53, 126, 22);
+        CPF.setBounds(270, 60, 140, 22);
 
         Email.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -64,17 +127,17 @@ public class cadastroJava extends javax.swing.JFrame {
             }
         });
         jPanel1.add(Email);
-        Email.setBounds(40, 101, 126, 22);
+        Email.setBounds(40, 60, 140, 22);
         jPanel1.add(DataDeNascimento);
-        DataDeNascimento.setBounds(281, 101, 120, 22);
+        DataDeNascimento.setBounds(270, 130, 140, 22);
         jPanel1.add(Senha);
-        Senha.setBounds(40, 180, 126, 22);
+        Senha.setBounds(40, 130, 140, 22);
         jPanel1.add(ConfirmarSenha);
-        ConfirmarSenha.setBounds(40, 231, 126, 22);
+        ConfirmarSenha.setBounds(40, 190, 140, 20);
 
         jLabel1.setText("Você é um técnico?");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(281, 183, 121, 16);
+        jLabel1.setBounds(270, 170, 121, 16);
 
         jRadioButton1.setText("Sim");
         jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -83,11 +146,11 @@ public class cadastroJava extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jRadioButton1);
-        jRadioButton1.setBounds(270, 210, 60, 21);
+        jRadioButton1.setBounds(270, 200, 60, 21);
 
         jRadioButton2.setText("Não");
         jPanel1.add(jRadioButton2);
-        jRadioButton2.setBounds(330, 210, 100, 21);
+        jRadioButton2.setBounds(330, 200, 100, 21);
 
         jButton1.setBackground(new java.awt.Color(255, 175, 0));
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
@@ -98,42 +161,38 @@ public class cadastroJava extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton1);
-        jButton1.setBounds(102, 290, 81, 23);
+        jButton1.setBounds(102, 283, 80, 30);
 
         jButton2.setBackground(new java.awt.Color(83, 137, 175));
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Cadastrar");
         jPanel1.add(jButton2);
-        jButton2.setBounds(264, 290, 89, 23);
+        jButton2.setBounds(260, 280, 89, 30);
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/logo java  48x48.png"))); // NOI18N
         jLabel3.setText("jLabel3");
         jPanel1.add(jLabel3);
         jLabel3.setBounds(387, 292, 43, 40);
 
-        jLabel2.setText("Nome Completo");
-        jPanel1.add(jLabel2);
-        jLabel2.setBounds(40, 25, 120, 16);
-
         jLabel4.setText("E-mail");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(40, 79, 150, 16);
+        jLabel4.setBounds(40, 40, 150, 16);
 
         jLabel5.setText("CPF");
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(281, 25, 170, 16);
+        jLabel5.setBounds(270, 40, 170, 16);
 
         jLabel6.setText("Data de nascimento");
         jPanel1.add(jLabel6);
-        jLabel6.setBounds(281, 81, 130, 16);
+        jLabel6.setBounds(270, 110, 130, 16);
 
         jLabel7.setText("Senha");
         jPanel1.add(jLabel7);
-        jLabel7.setBounds(40, 160, 160, 16);
+        jLabel7.setBounds(40, 110, 160, 16);
 
         jLabel8.setText("Confirmar senha");
         jPanel1.add(jLabel8);
-        jLabel8.setBounds(40, 212, 110, 16);
+        jLabel8.setBounds(40, 170, 110, 16);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -205,12 +264,10 @@ public class cadastroJava extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField ConfirmarSenha;
     private javax.swing.JFormattedTextField DataDeNascimento;
     private javax.swing.JFormattedTextField Email;
-    private javax.swing.JFormattedTextField NomeComplet;
     private javax.swing.JFormattedTextField Senha;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
