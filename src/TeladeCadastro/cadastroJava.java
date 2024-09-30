@@ -75,12 +75,21 @@ public class cadastroJava extends javax.swing.JFrame {
                    
                 }
                 else{
-                    usuarioCadastrado = usuario.CadastrarUsuario(usuario.getEmail(), usuario.getSenha(), usuario.getCpf(), usuario.getData_nasc(),usuario.getEstatus() ,usuario.getTipo());
+                    if(usuario.getEmail() == null || Psenha == null || usuario.getCpf() == null || 
+                            usuario.getData_nasc() == null || usuario.getEstatus() == null) {
+                        JOptionPane.showMessageDialog(null, "Erro ao cadastrar!!!", "Atenção", JOptionPane.ERROR_MESSAGE);
+                    }
+                     else {
+                    usuarioCadastrado = usuario.CadastrarUsuario(usuario.getEmail(), Psenha, usuario.getCpf(), usuario.getData_nasc(),usuario.getEstatus() ,usuario.getTipo());
                     if(usuarioCadastrado == true){
-                        JOptionPane.showMessageDialog(null, "Usuario cadastrado em nossa base!!!", "Atenção", JOptionPane.INFORMATION_MESSAGE);
+                        TelaLogin telaLogin = new TelaLogin();
+                        telaLogin.abrirTela();
+                        dispose();
+                        JOptionPane.showMessageDialog(null, "Usuario cadastrado!!!", "Atenção", JOptionPane.INFORMATION_MESSAGE);
                     }
                      else{
                         JOptionPane.showMessageDialog(null, "Erro ao cadastrar!!!", "Atenção", JOptionPane.ERROR_MESSAGE);
+                    }
                     }
                 }
                 }
