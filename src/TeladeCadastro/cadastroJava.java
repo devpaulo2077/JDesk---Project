@@ -63,6 +63,17 @@ public class cadastroJava extends javax.swing.JFrame {
         });
         jPanel1.add(Email);
         Email.setBounds(40, 101, 126, 22);
+
+        try {
+            DataDeNascimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##  ##  ####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        DataDeNascimento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DataDeNascimentoActionPerformed(evt);
+            }
+        });
         jPanel1.add(DataDeNascimento);
         DataDeNascimento.setBounds(281, 101, 120, 22);
         jPanel1.add(Senha);
@@ -134,7 +145,7 @@ public class cadastroJava extends javax.swing.JFrame {
         jLabel8.setBounds(40, 212, 110, 16);
 
         try {
-            jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+            jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###  ###  ###  ##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -168,6 +179,10 @@ public class cadastroJava extends javax.swing.JFrame {
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButton1ActionPerformed
+
+    private void DataDeNascimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DataDeNascimentoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DataDeNascimentoActionPerformed
     public void abrirTela(){
        new cadastroJava().setVisible(true);
     }
