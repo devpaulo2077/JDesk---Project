@@ -129,6 +129,8 @@ public class cadastroJava extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        Senha1 = new javax.swing.JFormattedTextField();
+        jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -136,8 +138,14 @@ public class cadastroJava extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setMinimumSize(new java.awt.Dimension(500, 300));
         jPanel1.setLayout(null);
+
+        try {
+            CPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("### ### ### ##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
         jPanel1.add(CPF);
-        CPF.setBounds(270, 60, 140, 22);
+        CPF.setBounds(270, 80, 140, 22);
 
         Email.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -145,13 +153,19 @@ public class cadastroJava extends javax.swing.JFrame {
             }
         });
         jPanel1.add(Email);
-        Email.setBounds(40, 60, 140, 22);
+        Email.setBounds(40, 110, 140, 22);
+
+        try {
+            DataDeNascimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
         jPanel1.add(DataDeNascimento);
         DataDeNascimento.setBounds(270, 130, 140, 22);
         jPanel1.add(Senha);
-        Senha.setBounds(40, 130, 140, 22);
+        Senha.setBounds(40, 60, 140, 22);
         jPanel1.add(ConfirmarSenha);
-        ConfirmarSenha.setBounds(40, 190, 140, 20);
+        ConfirmarSenha.setBounds(40, 220, 140, 20);
 
         jLabel1.setText("Você é um técnico?");
         jPanel1.add(jLabel1);
@@ -167,6 +181,11 @@ public class cadastroJava extends javax.swing.JFrame {
         jRadioButton1.setBounds(270, 200, 60, 21);
 
         jRadioButton2.setText("Não");
+        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton2ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jRadioButton2);
         jRadioButton2.setBounds(330, 200, 100, 21);
 
@@ -192,13 +211,13 @@ public class cadastroJava extends javax.swing.JFrame {
         jPanel1.add(jLabel3);
         jLabel3.setBounds(387, 292, 43, 40);
 
-        jLabel4.setText("E-mail");
+        jLabel4.setText("Nome");
         jPanel1.add(jLabel4);
         jLabel4.setBounds(40, 40, 150, 16);
 
         jLabel5.setText("CPF");
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(270, 40, 170, 16);
+        jLabel5.setBounds(270, 60, 170, 16);
 
         jLabel6.setText("Data de nascimento");
         jPanel1.add(jLabel6);
@@ -206,11 +225,17 @@ public class cadastroJava extends javax.swing.JFrame {
 
         jLabel7.setText("Senha");
         jPanel1.add(jLabel7);
-        jLabel7.setBounds(40, 110, 160, 16);
+        jLabel7.setBounds(40, 150, 160, 16);
 
         jLabel8.setText("Confirmar senha");
         jPanel1.add(jLabel8);
-        jLabel8.setBounds(40, 170, 110, 16);
+        jLabel8.setBounds(40, 200, 110, 16);
+        jPanel1.add(Senha1);
+        Senha1.setBounds(40, 170, 140, 22);
+
+        jLabel9.setText("E-mail");
+        jPanel1.add(jLabel9);
+        jLabel9.setBounds(40, 90, 150, 16);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -239,6 +264,10 @@ public class cadastroJava extends javax.swing.JFrame {
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButton1ActionPerformed
+
+    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton2ActionPerformed
     public void abrirTela(){
        new cadastroJava().setVisible(true);
     }
@@ -283,6 +312,7 @@ public class cadastroJava extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField DataDeNascimento;
     private javax.swing.JFormattedTextField Email;
     private javax.swing.JFormattedTextField Senha;
+    private javax.swing.JFormattedTextField Senha1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -292,6 +322,7 @@ public class cadastroJava extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
