@@ -36,7 +36,7 @@ public class cadastroJava extends javax.swing.JFrame {
                 String Csenha = ConfirmarSenha.getText();
                 
                 usuario.setSenha(validasenha);
-                usuario.setCpf(CPF.getText());
+                //usuario.setCpf(CPF.getText());
                 usuario.setData_nasc(DataDeNascimento.getText());
                 String tipo = "";
                if (jRadioButton1.isSelected() || jRadioButton2.isSelected()) {
@@ -62,10 +62,10 @@ public class cadastroJava extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Campo confirmar senha precisa ser informado!!!", "Atenção", JOptionPane.ERROR_MESSAGE);
                     ConfirmarSenha.grabFocus();
                 }
-                else if("".equals(usuario.getCpf())){
+                /*else if("".equals(usuario.getCpf())){
                     JOptionPane.showMessageDialog(null, "Campo cpf precisa ser informado!!!", "Atenção", JOptionPane.ERROR_MESSAGE);
                     CPF.grabFocus();
-                }
+                }*/
                 else if("".equals(usuario.getData_nasc())){
                     JOptionPane.showMessageDialog(null, "Campo data de nascimento precisa ser informado!!!", "Atenção", JOptionPane.ERROR_MESSAGE);
                     DataDeNascimento.grabFocus();
@@ -310,15 +310,15 @@ public class cadastroJava extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButton1ActionPerformed
 
-<<<<<<< HEAD
+//<<<<<<< HEAD;
     private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButton2ActionPerformed
-=======
+//=======;
     private void DataDeNascimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DataDeNascimentoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_DataDeNascimentoActionPerformed
->>>>>>> refs/remotes/origin/main
+//>>>>>>> refs/remotes/origin/main;
     public void abrirTela(){
        new cadastroJava().setVisible(true);
     }
