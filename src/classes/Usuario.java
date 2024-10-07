@@ -17,6 +17,8 @@ public class Usuario {
    private boolean resultUsuario;
    private boolean resultCadastro;
    
+   static String usuarioSistema;
+   
     
     public String getNome() {
         return nome;
@@ -102,7 +104,7 @@ public class Usuario {
             if(banco.resultset.next()){
                 resultUsuario = true;
                 System.out.println(banco.stmt.executeQuery("Select * from usuarios " + "WHERE email = '" + email + "'" + "AND senha = '" + senha + "'"));
-
+                usuarioSistema = getNome();
             }else{
                 resultUsuario = false;
                 System.out.println("errado");

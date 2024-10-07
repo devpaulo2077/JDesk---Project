@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package telaChamado;
-
+import classes.Usuario;
 /**
  *
  * @author renan.losantos
@@ -15,6 +15,7 @@ public class telaChamado extends javax.swing.JFrame {
      */
     public telaChamado() {
         initComponents();
+        txtUsuario = usuarioSistema;
     }
 
     /**
@@ -82,6 +83,10 @@ public class telaChamado extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void abrirTela(){
+        telaChamado telaChamado = new telaChamado();
+        telaChamado.setVisible(true);
+    }
     /**
      * @param args the command line arguments
      */
@@ -115,6 +120,7 @@ public class telaChamado extends javax.swing.JFrame {
                 new telaChamado().setVisible(true);
             }
         });
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

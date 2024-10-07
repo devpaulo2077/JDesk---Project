@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package TeladeLogin;
+import telaChamado.telaChamado;
 import TeladeCadastro.CadastroJava;
 import javax.swing.JLabel;
 import classes.Usuario;
@@ -60,6 +61,9 @@ public class TelaLogin extends javax.swing.JFrame {
                     usuarioValido = usuario.VerificarUsuario(usuario.getEmail(), usuario.getSenha());
                     if(usuarioValido == true){
                         JOptionPane.showMessageDialog(null, "Usuario valido em nossa base!!!", "Atenção", JOptionPane.INFORMATION_MESSAGE);
+                        telaChamado telaChamado = new telaChamado();
+                        telaChamado.abrirTela();
+                        dispose();
                     }
                      else{
                         JOptionPane.showMessageDialog(null, "Usuario invalido ou inexistente!!!", "Atenção", JOptionPane.ERROR_MESSAGE);
@@ -75,6 +79,7 @@ public class TelaLogin extends javax.swing.JFrame {
                 dispose();
             }
             });
+        
         
     }
 
