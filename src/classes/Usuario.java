@@ -114,12 +114,15 @@ public class Usuario {
         
         return resultUsuario;
     }
-    public Boolean CadastrarUsuario(String email, String senha, String cpf, String data_nasc,String estatus, String tipo){
+    public Boolean CadastrarUsuario(String nome, String email, String senha, String cpf, String data_nasc,String estatus, String tipo){
         Conexao banco = new Conexao();
         try{
+            System.out.println("Teste");
             banco.AbrirConexao();
             banco.stmt = banco.con.createStatement();    
-            banco.stmt.execute("INSERT INTO usuarios (email, senha, cpf, data_nasc,estatus,tipo) " + "VALUES ('" + email + "','" + senha + "','" + cpf + "','" + data_nasc + "','" + estatus + "','" + tipo + "')");
+            String sql = "INSERT INTO usuarios (nome, email, senha, cpf, data_nasc,estatus,tipo) " + "VALUES ('"+ nome + "','" + email + "','" + senha + "','" + cpf + "','" + data_nasc + "','" + estatus + "','" + tipo + "')";
+            System.out.println(sql);
+            banco.stmt.execute("INSERT INTO usuarios (nome, email, senha, cpf, data_nasc,estatus,tipo) " + "VALUES ('"+ nome + "','" + email + "','" + senha + "','" + cpf + "','" + data_nasc + "','" + estatus + "','" + tipo + "')");
             resultCadastro = true;
             System.out.println("Usuario inserido com sucesso!");
             banco.FecharConexao();

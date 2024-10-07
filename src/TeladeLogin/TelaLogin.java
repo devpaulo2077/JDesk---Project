@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package TeladeLogin;
-import TeladeCadastro.cadastroJava;
+import TeladeCadastro.CadastroJava;
 import javax.swing.JLabel;
 import classes.Usuario;
 import javax.swing.JOptionPane;
@@ -70,7 +70,7 @@ public class TelaLogin extends javax.swing.JFrame {
         
         cadastroJava.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
-                cadastroJava telaDeCadastro = new cadastroJava();
+                CadastroJava telaDeCadastro = new CadastroJava();
                 telaDeCadastro.abrirTela();
                 dispose();
             }
