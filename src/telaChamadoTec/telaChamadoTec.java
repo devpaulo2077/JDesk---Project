@@ -15,10 +15,16 @@ public class telaChamadoTec extends javax.swing.JFrame {
     /**
      * Creates new form telaChamado
      */
+   
+    
     public telaChamadoTec() {
         initComponents();
     }
-
+    
+    public void abrirTela()
+    {
+        new telaChamadoTec().setVisible(true);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -59,7 +65,7 @@ public class telaChamadoTec extends javax.swing.JFrame {
         txtUsuario.setForeground(new java.awt.Color(255, 0, 0));
         txtUsuario.setText("Úsuario");
         jPanel1.add(txtUsuario);
-        txtUsuario.setBounds(280, 140, 65, 25);
+        txtUsuario.setBounds(280, 140, 66, 25);
 
         btnChamado.setBackground(new java.awt.Color(204, 255, 255));
         btnChamado.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -68,9 +74,9 @@ public class telaChamadoTec extends javax.swing.JFrame {
         btnChamado.setBounds(150, 210, 190, 23);
 
         txtBemVindo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        txtBemVindo.setText("Bem vindo(A)");
+        txtBemVindo.setText("Bem vindo(a)");
         jPanel1.add(txtBemVindo);
-        txtBemVindo.setBounds(150, 140, 118, 25);
+        txtBemVindo.setBounds(150, 140, 114, 25);
 
         btnSeusChamados.setBackground(new java.awt.Color(255, 255, 204));
         btnSeusChamados.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -119,6 +125,8 @@ public class telaChamadoTec extends javax.swing.JFrame {
             }
         });
     }
+    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnChamado;

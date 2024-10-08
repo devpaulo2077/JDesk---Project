@@ -15,7 +15,6 @@ public class telaChamado extends javax.swing.JFrame {
      */
     public telaChamado() {
         initComponents();
-        txtUsuario = usuarioSistema;
     }
 
     /**

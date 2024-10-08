@@ -1,14 +1,13 @@
 package classes;
+import telaChamadoTec.telaChamadoTec;
+
 
 public class Usuario {
    private String nome; 
-
    private String email; 
    private String senha;
    private String cpf;
    private String estatus;
- 
-   
    private String data_nasc;
    private String tipo;
    //private String chamados;  
@@ -17,7 +16,7 @@ public class Usuario {
    private boolean resultUsuario;
    private boolean resultCadastro;
    
-   static String usuarioSistema;
+   public static String TIPO = "";
    
     
     public String getNome() {
@@ -103,17 +102,29 @@ public class Usuario {
             //banco.resultset = banco.stmt.executeQuery("select * from usuarios " + "WHERE email = rickij.marinho@gmail.com" + "AND senha = 123");;;
             if(banco.resultset.next()){
                 resultUsuario = true;
-                System.out.println(banco.stmt.executeQuery("Select * from usuarios " + "WHERE email = '" + email + "'" + "AND senha = '" + senha + "'"));
-                usuarioSistema = getNome();
+//              usuarioSistema = getNome();
             }else{
                 resultUsuario = false;
                 System.out.println("errado");
             }
+            int id = banco.resultset.getInt("id");
+            String nomeDB = banco.resultset.getString("nome");
+            String cpfDB = banco.resultset.getString("cpf");
+            String emailDB = banco.resultset.getString("email");
+            String data_nascDB = banco.resultset.getString("data_nasc");
+            String estatusDB = banco.resultset.getString("estatus");
+            String tipoDB = banco.resultset.getString("tipo");
+            System.out.println("ID: " + id);
+            System.out.println("NOME: " + nomeDB);
+            System.out.println("CPF: " + cpfDB);
+            System.out.println("DATA DE NASCIMENTO: " + data_nascDB);
+            System.out.println("STATUS: " + estatusDB);
+            System.out.println("TIPO: " + tipoDB);
+            Usuario.TIPO = tipoDB;
             banco.FecharConexao();
         }catch(Exception ec){
-            System.out.println("Erro ao verificar usuario" + ec.getMessage());
+            System.out.println("Erro ao verificar usuario: " + ec.getMessage());
         }
-        
         return resultUsuario;
     }
     public Boolean CadastrarUsuario(String nome, String email, String senha, String cpf, String data_nasc,String estatus, String tipo){

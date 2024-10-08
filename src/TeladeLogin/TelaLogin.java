@@ -10,6 +10,7 @@ import classes.Usuario;
 import javax.swing.JOptionPane;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import telaChamadoTec.telaChamadoTec;
 
 /**
  *
@@ -54,16 +55,30 @@ public class TelaLogin extends javax.swing.JFrame {
                     emailJava.grabFocus();
                 }
                 else if("".equals(usuario.getSenha())){
+                    
                     JOptionPane.showMessageDialog(null, "Campo senha precisa ser informado!!!", "Atenção", JOptionPane.ERROR_MESSAGE);
                     senhaJava.grabFocus();
                 }
                 else{
                     usuarioValido = usuario.VerificarUsuario(usuario.getEmail(), usuario.getSenha());
+                    
                     if(usuarioValido == true){
-                        JOptionPane.showMessageDialog(null, "Usuario valido em nossa base!!!", "Atenção", JOptionPane.INFORMATION_MESSAGE);
-                        telaChamado telaChamado = new telaChamado();
-                        telaChamado.abrirTela();
-                        dispose();
+                        JOptionPane.showMessageDialog(null, "Bem-vindo(a) ao sistema JDesk!!!", "Atenção", JOptionPane.INFORMATION_MESSAGE);
+                        Usuario usuarioDados = new Usuario();
+
+                        if(usuarioDados.TIPO.trim().equals("F")){
+                            System.out.println("MAINPAGE COMO F");
+                            telaChamado telaChamado = new telaChamado();
+                            telaChamado.abrirTela();
+                            dispose();
+                        } else {
+                            System.out.println("MAINPAGE COMO T");
+                            telaChamadoTec telaChamadoTec = new telaChamadoTec();
+                            telaChamadoTec.abrirTela();
+                                    
+                            dispose();
+                        }
+                        
                     }
                      else{
                         JOptionPane.showMessageDialog(null, "Usuario invalido ou inexistente!!!", "Atenção", JOptionPane.ERROR_MESSAGE);
