@@ -3,8 +3,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package telaChamado;
+import TeladeCadastro.CadastroJava;
 import classes.Usuario;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JLabel;
+import TeladeLogin.TelaLogin;
 /**
  *
  * @author renan.losantos
@@ -17,7 +21,15 @@ public class telaChamado extends javax.swing.JFrame {
     public telaChamado() {
         initComponents();
         txtUsuario.setText(Usuario.usuarioSistema);
+        btnVoltar.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                TelaLogin telaDeLogin = new TelaLogin();
+                telaDeLogin.abrirTela();
+                dispose();
+            }
+            });
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.

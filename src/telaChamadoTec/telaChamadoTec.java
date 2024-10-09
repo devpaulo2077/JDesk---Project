@@ -4,7 +4,10 @@
  */
 package telaChamadoTec;
 
+import TeladeLogin.TelaLogin;
 import classes.Usuario;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  *
@@ -20,6 +23,13 @@ public class telaChamadoTec extends javax.swing.JFrame {
     public telaChamadoTec() {
         initComponents();
         txtUsuario.setText(Usuario.usuarioSistema);
+        btnVoltar.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                TelaLogin telaDeLogin = new TelaLogin();
+                telaDeLogin.abrirTela();
+                dispose();
+            }
+            });
     }
     
     public void abrirTela()
