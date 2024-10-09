@@ -17,6 +17,7 @@ public class Usuario {
    private boolean resultCadastro;
    
    public static String TIPO = "";
+   public static String usuarioSistema;
    
     
     public String getNome() {
@@ -102,7 +103,7 @@ public class Usuario {
             //banco.resultset = banco.stmt.executeQuery("select * from usuarios " + "WHERE email = rickij.marinho@gmail.com" + "AND senha = 123");;;
             if(banco.resultset.next()){
                 resultUsuario = true;
-//              usuarioSistema = getNome();
+                usuarioSistema = getNome();
             }else{
                 resultUsuario = false;
                 System.out.println("errado");
@@ -121,6 +122,7 @@ public class Usuario {
             System.out.println("STATUS: " + estatusDB);
             System.out.println("TIPO: " + tipoDB);
             Usuario.TIPO = tipoDB;
+            usuarioSistema = nomeDB;
             banco.FecharConexao();
         }catch(Exception ec){
             System.out.println("Erro ao verificar usuario: " + ec.getMessage());

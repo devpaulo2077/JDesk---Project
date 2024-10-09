@@ -4,7 +4,7 @@
  */
 package telaChamadoTec;
 
-import telaChamado.*;
+import classes.Usuario;
 
 /**
  *
@@ -19,6 +19,7 @@ public class telaChamadoTec extends javax.swing.JFrame {
     
     public telaChamadoTec() {
         initComponents();
+        txtUsuario.setText(Usuario.usuarioSistema);
     }
     
     public void abrirTela()

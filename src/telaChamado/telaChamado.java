@@ -4,6 +4,7 @@
  */
 package telaChamado;
 import classes.Usuario;
+import javax.swing.JLabel;
 /**
  *
  * @author renan.losantos
@@ -15,6 +16,7 @@ public class telaChamado extends javax.swing.JFrame {
      */
     public telaChamado() {
         initComponents();
+        txtUsuario.setText(Usuario.usuarioSistema);
     }
 
     /**
