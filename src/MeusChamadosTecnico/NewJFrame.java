@@ -61,7 +61,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jScrollPane2.setBounds(0, 0, 400, 300);
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 0, 400, 300);
+        jPanel1.setBounds(0, 0, 0, 0);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

@@ -4,6 +4,7 @@
  */
 package telaChamado;
 import TeladeCadastro.CadastroJava;
+import abrirChamados.abrirChamado;
 import classes.Usuario;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -28,6 +29,13 @@ public class telaChamado extends javax.swing.JFrame {
                 dispose();
             }
             });
+        btnChamado.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                abrirChamado chamado = new abrirChamado();
+                chamado.abrirTela();
+                dispose();
+            }
+        });
     }
     
 
@@ -95,7 +103,9 @@ public class telaChamado extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    
+    
     public void abrirTela(){
         telaChamado telaChamado = new telaChamado();
         telaChamado.setVisible(true);
