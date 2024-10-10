@@ -18,6 +18,7 @@ public class Usuario {
    
    public static String TIPO = "";
    public static String usuarioSistema;
+   public static int idTecnico;
    
     
     public String getNome() {
@@ -123,6 +124,7 @@ public class Usuario {
             System.out.println("TIPO: " + tipoDB);
             Usuario.TIPO = tipoDB;
             usuarioSistema = nomeDB;
+            idTecnico = id;
             banco.FecharConexao();
         }catch(Exception ec){
             System.out.println("Erro ao verificar usuario: " + ec.getMessage());
