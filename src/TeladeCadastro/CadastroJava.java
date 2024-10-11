@@ -2,8 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
+
 package TeladeCadastro;
+
+import javax.swing.text.MaskFormatter;
 import classes.Usuario;
+import javax.swing.JFormattedTextField;
+import java.text.ParseException;
 import javax.swing.JOptionPane; 
 import javax.swing.JPanel;
 import TeladeLogin.TelaLogin;
@@ -20,6 +25,8 @@ public class CadastroJava extends javax.swing.JFrame {
      */
     public CadastroJava() {
         initComponents();
+          setResizable(false);
+    
         
         btnCadastrar.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
@@ -178,6 +185,24 @@ public class CadastroJava extends javax.swing.JFrame {
         btnCadastrar = new javax.swing.JButton();
         btnVoltar = new javax.swing.JButton();
         logoJava = new javax.swing.JLabel();
+        
+       
+
+    // Adicionar o campo CPF ao painel
+    jPanel1.add(CPF);
+    CPF.setBounds(320, 150, 170, 22);
+      try {
+        MaskFormatter cpfFormatter = new MaskFormatter("###.###.###-##");
+        cpfFormatter.setPlaceholderCharacter('_'); // Substitui espaços em branco por '_'
+        CPF = new JFormattedTextField(cpfFormatter);
+    } catch (ParseException e) {
+        e.printStackTrace();
+    }
+        
+        
+        
+         buttonGroup1.add(btnSim);
+         buttonGroup1.add(btnNao);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
