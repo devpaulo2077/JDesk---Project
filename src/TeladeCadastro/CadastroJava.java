@@ -14,6 +14,33 @@ import javax.swing.JPanel;
 import TeladeLogin.TelaLogin;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.text.AbstractDocument;
+
+import javax.swing.text.AttributeSet;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.DocumentFilter;
+
+class NumericDocumentFilter extends DocumentFilter {
+    @Override
+    public void insertString(FilterBypass fb, int offset, String string, AttributeSet attr) throws BadLocationException {
+        if (string != null && string.matches("[0-9]*")) { // Permite apenas números
+            super.insertString(fb, offset, string, attr);
+        }
+    }
+
+    @Override
+    public void replace(FilterBypass fb, int offset, int length, String text, AttributeSet attrs) throws BadLocationException {
+        if (text != null && text.matches("[0-9]*")) { // Permite apenas números
+            super.replace(fb, offset, length, text, attrs);
+        }
+    }
+
+    @Override
+    public void remove(FilterBypass fb, int offset, int length) throws BadLocationException {
+        super.remove(fb, offset, length);
+    }
+}
+
 /**
  *
  * @author renan.losantos
@@ -40,7 +67,7 @@ public class CadastroJava extends javax.swing.JFrame {
                 String Psenha = txtSenha.getText();
                 String Csenha = txtConfirmarSenha.getText();
                 usuario.setSenha(validasenha);
-                
+                System.out.println("CPF FORMATADO AAAAAAAAAAAAAA "+ CPF.getText());
                 
                 if(usuario.getNome().length() <3){
                     JOptionPane.showMessageDialog(null, "Nome Inválido, Caracteres insuficientes!!", "Atenção", JOptionPane.ERROR_MESSAGE);
@@ -70,6 +97,7 @@ public class CadastroJava extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Cpf Inválido, caracteres insuficientes!!", "Atenção", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
+                
                 // ERROR 11/10/2024
 		/* else if( usuario.getData_nasc().length() <10){
                     JOptionPane.showMessageDialog(null, "Data Inválida, caracteres insuficientes!! ", "Atenção", JOptionPane.ERROR_MESSAGE);
@@ -189,15 +217,17 @@ public class CadastroJava extends javax.swing.JFrame {
        
 
     // Adicionar o campo CPF ao painel
-    jPanel1.add(CPF);
-    CPF.setBounds(320, 150, 170, 22);
-      try {
-        MaskFormatter cpfFormatter = new MaskFormatter("###.###.###-##");
-        cpfFormatter.setPlaceholderCharacter('_'); // Substitui espaços em branco por '_'
-        CPF = new JFormattedTextField(cpfFormatter);
-    } catch (ParseException e) {
-        e.printStackTrace();
-    }
+    try {
+    MaskFormatter cpfFormatter = new MaskFormatter("###.###.###-##");
+    cpfFormatter.setPlaceholderCharacter('_');
+    CPF = new JFormattedTextField(cpfFormatter);
+    
+    // Aplicar o DocumentFilter
+    ((AbstractDocument) CPF.getDocument()).setDocumentFilter(new NumericDocumentFilter());
+} catch (ParseException e) {
+    e.printStackTrace();
+}
+
         
         
         
