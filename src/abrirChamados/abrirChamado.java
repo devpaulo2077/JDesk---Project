@@ -1,5 +1,14 @@
 package abrirChamados;
 
+import java.awt.event.ActionListener;
+import javax.swing.Action;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import classes.Chamados;
+import classes.Usuario;
+import telaChamado.telaChamado;
+import javax.swing.JOptionPane;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -16,6 +25,20 @@ public class abrirChamado extends javax.swing.JFrame {
      */
     public abrirChamado() {
         initComponents();
+        
+        btnCriar.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                Chamados chamados = new Chamados();
+                Usuario usuario = new Usuario();
+                int patrimonio = Integer.parseInt(textAreaPatri.getText());
+                chamados.CriarChamados(patrimonio, textAreaProblema.getText(), usuario.idTecnico);
+                JOptionPane.showMessageDialog(null, "Chamado cadastrado com sucesso, por favor, aguarde um técnico.", "Atenção", JOptionPane.INFORMATION_MESSAGE);
+                telaChamado mainpage = new telaChamado();
+                mainpage.abrirTela();
+                dispose();
+                
+            }
+        });
     }
 
     /**
@@ -127,6 +150,8 @@ public class abrirChamado extends javax.swing.JFrame {
             }
         });
     }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel JavaLogo;

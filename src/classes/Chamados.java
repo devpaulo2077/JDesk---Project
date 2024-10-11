@@ -56,7 +56,6 @@ public class Chamados {
             String sql = "INSERT INTO chamados (estatus, patri_equipamento, desc_problema, desc_acao, id_usuario) " + "VALUES ('"+ "Aberto" + "','" + patrimonio + "','" + problema + "','" + "sem desc" + "','" + id + "')";            
             banco.stmt.execute(sql);
             resultChamados = true;
-            System.out.println("Chamado realizado com sucesso!");
             banco.FecharConexao();
         }catch(Exception ec){
             resultChamados = false;

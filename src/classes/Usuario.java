@@ -87,21 +87,14 @@ public class Usuario {
         }
         return resultSenha;
     }
-    
-    //public String getChamados() {
-    //    return chamados;
-    //}
 
-    //public void setChamados(String chamados) {
-    //    this.chamados = chamados;
-    //}
     public Boolean VerificarUsuario(String email, String senha){
         Conexao banco = new Conexao();
         try{
             banco.AbrirConexao();
             banco.stmt = banco.con.createStatement();
             banco.resultset = banco.stmt.executeQuery("Select * from usuarios " + "WHERE email = '" + email + "'" + "AND senha = '" + senha + "'");
-            //banco.resultset = banco.stmt.executeQuery("select * from usuarios " + "WHERE email = rickij.marinho@gmail.com" + "AND senha = 123");;;
+            
             if(banco.resultset.next()){
                 resultUsuario = true;
                 usuarioSistema = getNome();
@@ -116,12 +109,6 @@ public class Usuario {
             String data_nascDB = banco.resultset.getString("data_nasc");
             String estatusDB = banco.resultset.getString("estatus");
             String tipoDB = banco.resultset.getString("tipo");
-            System.out.println("ID: " + id);
-            System.out.println("NOME: " + nomeDB);
-            System.out.println("CPF: " + cpfDB);
-            System.out.println("DATA DE NASCIMENTO: " + data_nascDB);
-            System.out.println("STATUS: " + estatusDB);
-            System.out.println("TIPO: " + tipoDB);
             Usuario.TIPO = tipoDB;
             usuarioSistema = nomeDB;
             idTecnico = id;

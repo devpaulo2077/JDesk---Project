@@ -34,7 +34,6 @@ public class CadastroJava extends javax.swing.JFrame {
                 String Csenha = txtConfirmarSenha.getText();
                 usuario.setSenha(validasenha);
                 
-                System.out.println("PSENHA COM LEGHT: "+ Psenha.length() );
                 
                 if(usuario.getNome().length() <3){
                     JOptionPane.showMessageDialog(null, "Nome Inválido, Caracteres insuficientes!!", "Atenção", JOptionPane.ERROR_MESSAGE);
