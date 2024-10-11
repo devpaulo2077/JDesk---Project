@@ -2,13 +2,45 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
+
 package TeladeCadastro;
+
+import javax.swing.text.MaskFormatter;
 import classes.Usuario;
+import javax.swing.JFormattedTextField;
+import java.text.ParseException;
 import javax.swing.JOptionPane; 
 import javax.swing.JPanel;
 import TeladeLogin.TelaLogin;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.text.AbstractDocument;
+
+import javax.swing.text.AttributeSet;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.DocumentFilter;
+
+class NumericDocumentFilter extends DocumentFilter {
+    @Override
+    public void insertString(FilterBypass fb, int offset, String string, AttributeSet attr) throws BadLocationException {
+        if (string != null && string.matches("[0-9]*")) { // Permite apenas números
+            super.insertString(fb, offset, string, attr);
+        }
+    }
+
+    @Override
+    public void replace(FilterBypass fb, int offset, int length, String text, AttributeSet attrs) throws BadLocationException {
+        if (text != null && text.matches("[0-9]*")) { // Permite apenas números
+            super.replace(fb, offset, length, text, attrs);
+        }
+    }
+
+    @Override
+    public void remove(FilterBypass fb, int offset, int length) throws BadLocationException {
+        super.remove(fb, offset, length);
+    }
+}
+
 /**
  *
  * @author renan.losantos
@@ -20,6 +52,8 @@ public class CadastroJava extends javax.swing.JFrame {
      */
     public CadastroJava() {
         initComponents();
+          setResizable(false);
+    
         
         btnCadastrar.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
@@ -33,7 +67,7 @@ public class CadastroJava extends javax.swing.JFrame {
                 String Psenha = txtSenha.getText();
                 String Csenha = txtConfirmarSenha.getText();
                 usuario.setSenha(validasenha);
-                
+                System.out.println("CPF FORMATADO AAAAAAAAAAAAAA "+ CPF.getText());
                 
                 if(usuario.getNome().length() <3){
                     JOptionPane.showMessageDialog(null, "Nome Inválido, Caracteres insuficientes!!", "Atenção", JOptionPane.ERROR_MESSAGE);
@@ -63,6 +97,7 @@ public class CadastroJava extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Cpf Inválido, caracteres insuficientes!!", "Atenção", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
+                
                 // ERROR 11/10/2024
 		/* else if( usuario.getData_nasc().length() <10){
                     JOptionPane.showMessageDialog(null, "Data Inválida, caracteres insuficientes!! ", "Atenção", JOptionPane.ERROR_MESSAGE);
@@ -178,6 +213,26 @@ public class CadastroJava extends javax.swing.JFrame {
         btnCadastrar = new javax.swing.JButton();
         btnVoltar = new javax.swing.JButton();
         logoJava = new javax.swing.JLabel();
+        
+       
+
+    // Adicionar o campo CPF ao painel
+    try {
+    MaskFormatter cpfFormatter = new MaskFormatter("###.###.###-##");
+    cpfFormatter.setPlaceholderCharacter('_');
+    CPF = new JFormattedTextField(cpfFormatter);
+    
+    // Aplicar o DocumentFilter
+    ((AbstractDocument) CPF.getDocument()).setDocumentFilter(new NumericDocumentFilter());
+} catch (ParseException e) {
+    e.printStackTrace();
+}
+
+        
+        
+        
+         buttonGroup1.add(btnSim);
+         buttonGroup1.add(btnNao);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 

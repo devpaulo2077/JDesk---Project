@@ -122,6 +122,7 @@ public class TelaLogin extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Tela Login");
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setMinimumSize(new java.awt.Dimension(500, 350));
@@ -132,7 +133,6 @@ public class TelaLogin extends javax.swing.JFrame {
         jPanel1.add(txtEmail);
         txtEmail.setBounds(150, 110, 48, 22);
 
-        emailJava.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         emailJava.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 emailJavaActionPerformed(evt);
@@ -141,7 +141,6 @@ public class TelaLogin extends javax.swing.JFrame {
         jPanel1.add(emailJava);
         emailJava.setBounds(150, 150, 258, 18);
 
-        senhaJava.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jPanel1.add(senhaJava);
         senhaJava.setBounds(150, 200, 258, 18);
 
@@ -153,7 +152,7 @@ public class TelaLogin extends javax.swing.JFrame {
         entrarJava.setBackground(new java.awt.Color(204, 255, 255));
         entrarJava.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         entrarJava.setText("Entrar");
-        entrarJava.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        entrarJava.setBorder(javax.swing.BorderFactory.createLineBorder(null));
         entrarJava.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 entrarJavaActionPerformed(evt);
@@ -170,7 +169,6 @@ public class TelaLogin extends javax.swing.JFrame {
         cadastroJava.setBackground(new java.awt.Color(255, 255, 51));
         cadastroJava.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         cadastroJava.setText("Cadastrar");
-        cadastroJava.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jPanel1.add(cadastroJava);
         cadastroJava.setBounds(220, 340, 100, 18);
 
