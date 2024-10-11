@@ -5,6 +5,7 @@
 package telaChamadoTec;
 
 import TeladeLogin.TelaLogin;
+import TelaConsultaChamadosT.ConsultarChamados;
 import classes.Usuario;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -28,6 +29,13 @@ public class telaChamadoTec extends javax.swing.JFrame {
                 TelaLogin telaDeLogin = new TelaLogin();
                 telaDeLogin.abrirTela();
                 dispose();
+            }
+            });
+        btnChamado.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                ConsultarChamados tela = new ConsultarChamados();
+                tela.abrirTela(); // Chama o método para abrir a tela
+                dispose(); // Fecha a tela atual
             }
             });
     }
