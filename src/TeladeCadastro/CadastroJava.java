@@ -63,6 +63,7 @@ public class CadastroJava extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Cpf Inválido, caracteres insuficientes!!", "Atenção", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
+                // ERROR 11/10/2024
 		/* else if( usuario.getData_nasc().length() <10){
                     JOptionPane.showMessageDialog(null, "Data Inválida, caracteres insuficientes!! ", "Atenção", JOptionPane.ERROR_MESSAGE);
                     return;

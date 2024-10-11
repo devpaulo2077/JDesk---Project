@@ -125,10 +125,8 @@ public class Usuario {
             banco.AbrirConexao();
             banco.stmt = banco.con.createStatement();    
             String sql = "INSERT INTO usuarios (nome, email, senha, cpf, data_nasc,estatus,tipo) " + "VALUES ('"+ nome + "','" + email + "','" + senha + "','" + cpf + "','" + data_nasc + "','" + estatus + "','" + tipo + "')";
-            System.out.println(sql);
             banco.stmt.execute("INSERT INTO usuarios (nome, email, senha, cpf, data_nasc,estatus,tipo) " + "VALUES ('"+ nome + "','" + email + "','" + senha + "','" + cpf + "','" + data_nasc + "','" + estatus + "','" + tipo + "')");
             resultCadastro = true;
-            System.out.println("Usuario inserido com sucesso!");
             banco.FecharConexao();
         }catch(Exception ec){
             resultCadastro = false;

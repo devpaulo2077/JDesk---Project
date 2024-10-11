@@ -39,6 +39,14 @@ public class abrirChamado extends javax.swing.JFrame {
                 
             }
         });
+        btnVoltar.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                telaChamado mainpage = new telaChamado();
+                mainpage.abrirTela();
+                dispose();
+                
+            }
+        });
     }
 
     /**
