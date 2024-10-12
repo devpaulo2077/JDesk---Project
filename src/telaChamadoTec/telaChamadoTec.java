@@ -9,6 +9,7 @@ import TelaConsultaChamadosT.ConsultarChamados;
 import classes.Usuario;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import ChamadosAceitos.ChamadosAceitos;
 
 /**
  *
@@ -33,7 +34,7 @@ public class telaChamadoTec extends javax.swing.JFrame {
             });
         btnChamado.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
-                ConsultarChamados tela = new ConsultarChamados();
+                ChamadosAceitos tela = new ChamadosAceitos();
                 tela.abrirTela(); // Chama o método para abrir a tela
                 dispose(); // Fecha a tela atual
             }

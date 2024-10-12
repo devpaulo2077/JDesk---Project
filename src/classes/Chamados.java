@@ -64,13 +64,6 @@ public class Chamados {
         return resultChamados;
     }
     
-    public boolean AceitarChamados(){
-        boolean resultAceitarChamados;
-        
-        
-        
-        return resultAceitarChamados;
-    }
     
    
 }
