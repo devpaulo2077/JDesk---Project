@@ -5,6 +5,8 @@ import javax.swing.table.*;
 import java.awt.*;
 import java.util.ArrayList;
 import classes.Conexao;
+import ChamadosAceitos.ChamadosAceitos;
+import telaChamadoTec.telaChamadoTec;
 
 public class ConsultarChamados {
 
@@ -14,11 +16,11 @@ public class ConsultarChamados {
 
     public static void abrirTela() {
         Conexao banco = new Conexao();
+        JFrame frame = new JFrame("Consultar Chamados");
 
         try {
             banco.AbrirConexao();
             banco.stmt = banco.con.createStatement();
-
             banco.resultset = banco.stmt.executeQuery("SELECT chamados.estatus, chamados.patri_equipamento, chamados.desc_problema FROM chamados WHERE chamados.estatus = 'aberto';");
 
             ArrayList<String[]> dadosList = new ArrayList<>();
@@ -42,21 +44,23 @@ public class ConsultarChamados {
             };
 
             JTable tabela = new JTable(model);
-
             tabela.getColumn("Ação").setCellRenderer(new ButtonRenderer());
             tabela.getColumn("Ação").setCellEditor(new ButtonEditor(new JCheckBox(), tabela));
 
             JScrollPane scrollPane = new JScrollPane(tabela);
 
             JButton btnVoltar = new JButton("Voltar");
-            btnVoltar.addActionListener(e -> ((JFrame) SwingUtilities.getWindowAncestor(btnVoltar)).dispose());
+            btnVoltar.addActionListener(e -> {
+                telaChamadoTec mainpage = new telaChamadoTec();
+                mainpage.abrirTela();
+                frame.dispose();
+            });
 
             JPanel panel = new JPanel();
             panel.setLayout(new BorderLayout());
             panel.add(scrollPane, BorderLayout.CENTER);
             panel.add(btnVoltar, BorderLayout.SOUTH);
 
-            JFrame frame = new JFrame("Consultar Chamados");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.add(panel);
             frame.setSize(480, 400);
@@ -106,17 +110,10 @@ class ButtonEditor extends DefaultCellEditor {
         if (isPushed) {
             int selectedRow = table.getSelectedRow();
             String patrimonio = table.getValueAt(selectedRow, 0).toString();
-            
-            // Atualizar o status no banco de dados
             aceitarChamado(patrimonio);
-            
             JOptionPane.showMessageDialog(button, "Chamado de patrimônio " + patrimonio + " foi aceito!");
-
-            // Fechar a tela atual
-            SwingUtilities.getWindowAncestor(button).dispose();
-
-            // Reabrir a tela de todos os chamados
-            ConsultarChamados.abrirTela();
+            SwingUtilities.getWindowAncestor(button).dispose(); // Fecha a tela atual
+            ChamadosAceitos.abrirTela();
         }
         isPushed = false;
         return "Aceitar";
@@ -128,17 +125,13 @@ class ButtonEditor extends DefaultCellEditor {
         return super.stopCellEditing();
     }
 
-    // Método para atualizar o status do chamado no banco de dados
     private void aceitarChamado(String patrimonio) {
         Conexao banco = new Conexao();
         try {
             banco.AbrirConexao();
             banco.stmt = banco.con.createStatement();
-
-            // Query para atualizar o status para 'aceito'
             String sql = "UPDATE chamados SET estatus = 'Aceito' WHERE patri_equipamento = '" + patrimonio + "'";
             banco.stmt.executeUpdate(sql);
-
         } catch (Exception e) {
             JOptionPane.showMessageDialog(button, "Erro ao aceitar o chamado: " + e.getMessage());
         } finally {

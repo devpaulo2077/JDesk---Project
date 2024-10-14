@@ -32,13 +32,19 @@ public class telaChamadoTec extends javax.swing.JFrame {
                 dispose();
             }
             });
-        btnChamado.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e){
-                ChamadosAceitos tela = new ChamadosAceitos();
-                tela.abrirTela(); // Chama o método para abrir a tela
+        btnChamado.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                ConsultarChamados tela = new ConsultarChamados();
+                tela.abrirTela(); // Chama o método para abrir a tela de chamados aceitos
                 dispose(); // Fecha a tela atual
             }
-            });
+        });
+        btnSeusChamados.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                ChamadosAceitos.abrirTela(); // Abre a tela de chamados abertos
+                dispose(); // Fecha a tela atual
+            }
+        });
     }
     
     public void abrirTela()
