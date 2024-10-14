@@ -5,6 +5,7 @@
 package telaChamado;
 import TeladeCadastro.CadastroJava;
 import abrirChamados.abrirChamado;
+import MeusChamadosFuncionario.MeusChamadosF;
 import classes.Usuario;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -34,6 +35,12 @@ public class telaChamado extends javax.swing.JFrame {
                 abrirChamado chamado = new abrirChamado();
                 chamado.abrirTela();
                 dispose();
+            }
+        });
+        btnSeusChamados.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                MeusChamadosF.abrirTela(); // Abre a tela de chamados abertos
+                dispose(); // Fecha a tela atual
             }
         });
     }

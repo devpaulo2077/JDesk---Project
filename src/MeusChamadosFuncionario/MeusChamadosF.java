@@ -1,5 +1,4 @@
-package ChamadosAceitos;
-
+package MeusChamadosFuncionario;
 import classes.Conexao;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -7,22 +6,24 @@ import java.awt.*;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import telaChamadoTec.telaChamadoTec;
+import classes.Usuario;
+import telaChamado.telaChamado;
 
-public class ChamadosAceitos extends JFrame {
+public class MeusChamadosF extends JFrame {
 
-    public ChamadosAceitos() {
+    public MeusChamadosF(){
         setTitle("Chamados Aceitos");
         setSize(500, 300);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         
         JPanel panel = new JPanel(new BorderLayout());
-        JTable tabelaChamados = criarTabelaChamadosAceitos();
+        JTable tabelaChamados = criarTabelaMeusChamados();
         JScrollPane scrollPane = new JScrollPane(tabelaChamados);
 
         JButton btnVoltar = new JButton("Voltar");
         btnVoltar.addActionListener(e -> {
-            telaChamadoTec mainpage = new telaChamadoTec();
-            mainpage.abrirTela();
+            telaChamado telaChamado = new telaChamado();
+            telaChamado.abrirTela();
             dispose();
         });
 
@@ -32,21 +33,20 @@ public class ChamadosAceitos extends JFrame {
         
         setVisible(true);
     }
-
-    public JTable criarTabelaChamadosAceitos() {
+    public JTable criarTabelaMeusChamados() {
         String[] colunas = {"Patrimônio", "Problema", "Ação"};
-        String[][] dados = obterDadosChamadosAceitos();
+        String[][] dados = obterDadosMeusChamados();
         DefaultTableModel model = new DefaultTableModel(dados, colunas);
         return new JTable(model);
     }
-
-    private String[][] obterDadosChamadosAceitos() {
+     private String[][] obterDadosMeusChamados() {
         Conexao banco = new Conexao();
         ArrayList<String[]> dadosList = new ArrayList<>();
         try {
+            int id = Usuario.idTecnico;
             banco.AbrirConexao();
             banco.stmt = banco.con.createStatement();
-            ResultSet resultSet = banco.stmt.executeQuery("SELECT patri_equipamento, desc_problema, desc_acao FROM chamados WHERE estatus = 'aceito'");
+            ResultSet resultSet = banco.stmt.executeQuery("SELECT patri_equipamento, desc_problema, desc_acao FROM chamados WHERE id_usuario = '" + id + "'");
             while (resultSet.next()) {
                 String patrimonio = resultSet.getString("patri_equipamento");
                 String problema = resultSet.getString("desc_problema");
@@ -64,6 +64,7 @@ public class ChamadosAceitos extends JFrame {
     }
 
     public static void abrirTela() {
-        new ChamadosAceitos();
+        new MeusChamadosF();
     }
 }
+
