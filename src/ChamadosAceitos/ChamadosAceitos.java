@@ -40,6 +40,7 @@ public class ChamadosAceitos extends JFrame {
         setVisible(true);
     }
 
+<<<<<<< HEAD
   private JTable criarTabelaChamadosAceitos() {
     String[] colunas = {"Patrimônio", "Problema", "Ação"};
     String[][] dados = obterDadosChamadosAceitos();
@@ -60,6 +61,14 @@ public class ChamadosAceitos extends JFrame {
     return tabela;
 }
 
+=======
+    public JTable criarTabelaChamadosAceitos() {
+        String[] colunas = {"Patrimônio", "Problema", "Ação"};
+        String[][] dados = obterDadosChamadosAceitos();
+        DefaultTableModel model = new DefaultTableModel(dados, colunas);
+        return new JTable(model);
+    }
+>>>>>>> 8425fe6f1680905c75dc5de3afa756adab9eea0c
 
     private String[][] obterDadosChamadosAceitos() {
         Conexao banco = new Conexao();
