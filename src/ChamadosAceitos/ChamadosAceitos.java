@@ -11,12 +11,13 @@ import telaChamadoTec.telaChamadoTec;
 
 public class ChamadosAceitos extends JFrame {
 
+    private JTable currentTable;
+
     public ChamadosAceitos() {
         setTitle("Chamados Aceitos");
         setSize(600, 400);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
-       
         JPanel panel = new JPanel(new BorderLayout());
         JTable tabelaChamados = criarTabelaChamadosAceitos();
         JScrollPane scrollPane = new JScrollPane(tabelaChamados);
@@ -40,35 +41,26 @@ public class ChamadosAceitos extends JFrame {
         setVisible(true);
     }
 
-<<<<<<< HEAD
-  private JTable criarTabelaChamadosAceitos() {
-    String[] colunas = {"Patrimônio", "Problema", "Ação"};
-    String[][] dados = obterDadosChamadosAceitos();
-    DefaultTableModel model = new DefaultTableModel(dados, colunas);
-
-    JTable tabela = new JTable(model);
-    tabela.setBackground(Color.WHITE); // Fundo da tabela
-    tabela.setGridColor(Color.LIGHT_GRAY); // Cor das linhas
-    tabela.setShowGrid(true); // Mostra as linhas
-
-    // Configura a cor do cabeçalho da tabela
-    tabela.getTableHeader().setBackground(Color.WHITE);
-    tabela.getTableHeader().setForeground(Color.BLACK);
-
-    tabela.getColumnModel().getColumn(2).setCellRenderer(new ActionButtonRenderer());
-    tabela.getColumnModel().getColumn(2).setCellEditor(new ActionButtonEditor());
-
-    return tabela;
-}
-
-=======
-    public JTable criarTabelaChamadosAceitos() {
+    private JTable criarTabelaChamadosAceitos() {
         String[] colunas = {"Patrimônio", "Problema", "Ação"};
         String[][] dados = obterDadosChamadosAceitos();
         DefaultTableModel model = new DefaultTableModel(dados, colunas);
-        return new JTable(model);
+
+        currentTable = new JTable(model); // Atribua a tabela à variável da classe
+        currentTable.setBackground(Color.WHITE); // Fundo da tabela
+        currentTable.setGridColor(Color.LIGHT_GRAY); // Cor das linhas
+        currentTable.setShowGrid(true); // Mostra as linhas
+
+        // Configura a cor do cabeçalho da tabela
+        currentTable.getTableHeader().setBackground(Color.WHITE);
+        currentTable.getTableHeader().setForeground(Color.BLACK);
+
+        currentTable.getColumnModel().getColumn(2).setCellRenderer(new ActionButtonRenderer());
+        currentTable.getColumnModel().getColumn(2).setCellEditor(new ActionButtonEditor(currentTable)); // Passe a referência da tabela
+
+        return currentTable; // Retorne a tabela
+
     }
->>>>>>> 8425fe6f1680905c75dc5de3afa756adab9eea0c
 
     private String[][] obterDadosChamadosAceitos() {
         Conexao banco = new Conexao();
@@ -139,7 +131,12 @@ public class ChamadosAceitos extends JFrame {
         private final JButton btnConcluir = new JButton("Concluir");
         private final JButton btnCancelar = new JButton("Cancelar");
 
-        public ActionButtonEditor() {
+        // Adiciona uma variável para armazenar a tabela atual
+        private JTable currentTable;
+
+        // Modifica o construtor para receber a tabela
+        public ActionButtonEditor(JTable currentTable) {
+            this.currentTable = currentTable; // Armazena a referência da tabela
             configurarBotoes();
         }
 
@@ -163,8 +160,34 @@ public class ChamadosAceitos extends JFrame {
             });
 
             btnCancelar.addActionListener(e -> {
-                JOptionPane.showMessageDialog(null, "Chamado Cancelado!");
-                fireEditingStopped();
+                int currentRow = currentTable.getSelectedRow(); // Obtém a linha selecionada da tabela atual
+                if (currentRow != -1) { // Verifica se alguma linha está selecionada
+                    String patrimonio = currentTable.getValueAt(currentRow, 0).toString(); // Captura o patrimônio da coluna correta
+                    Conexao banco = new Conexao();
+
+                    try {
+                        banco.AbrirConexao();
+                        banco.stmt = banco.con.createStatement();
+                        int resultado = banco.stmt.executeUpdate(
+                                "UPDATE chamados SET estatus = 'aberto' WHERE patri_equipamento = '" + patrimonio + "'"
+                        );
+                        if (resultado > 0) {
+                            JOptionPane.showMessageDialog(null, "Chamado cancelado com sucesso!");
+                                dispose();
+                                abrirTela();
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Erro ao cancelar o chamado.");
+                        }
+                    } catch (Exception ex) {
+                        JOptionPane.showMessageDialog(null, "Erro ao cancelar chamado: " + ex.getMessage());
+                    } finally {
+                        banco.FecharConexao();
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Selecione um chamado para cancelar.");
+                }
+
+                fireEditingStopped(); // Para parar a edição da célula
             });
 
             panel.add(btnConcluir);
