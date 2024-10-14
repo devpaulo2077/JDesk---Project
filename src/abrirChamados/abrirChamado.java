@@ -9,11 +9,14 @@ import classes.Usuario;
 import telaChamado.telaChamado;
 import javax.swing.JOptionPane;
 
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
+
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author renan.losantos
@@ -25,26 +28,68 @@ public class abrirChamado extends javax.swing.JFrame {
      */
     public abrirChamado() {
         initComponents();
-        
-        btnCriar.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e){
+
+        btnCriar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
                 Chamados chamados = new Chamados();
                 Usuario usuario = new Usuario();
-                int patrimonio = Integer.parseInt(textAreaPatri.getText());
+
+                String patrimonioText = textAreaPatri.getText().trim(); // Obter e remover espaços
+
+                // Verificar se a entrada do patrimônio está vazia
+                if (patrimonioText.isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Erro ao criar chamado, patrimônio nulo!!!", "Atenção", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+                
+                // Validação do comprimento do patrimônio como inteiro e se é só numero
+                if (patrimonioText.length() > 15) {
+                    JOptionPane.showMessageDialog(null, "O máximo é 15 caracteres para o patrimônio.", "Atenção", JOptionPane.ERROR_MESSAGE);
+                    return;
+                } else if(!Pattern.matches("\\d+", patrimonioText.trim())){
+                    JOptionPane.showMessageDialog(null, "o patrimônio deve conter apenas números!", "Atenção", JOptionPane.ERROR_MESSAGE);
+                }
+
+                int patrimonio;
+
+                try {
+                    patrimonio = Integer.parseInt(patrimonioText);
+                } catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(null, "Erro ao criar chamado, patrimônio inválido!!!", "Atenção", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+
+
+                // Verificar se a entrada do problema está vazia
+                if (textAreaProblema.getText().trim().isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Erro ao criar chamado, descrição nula!!!", "Atenção", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+
+                if (textAreaProblema.getText().length() < 12) {
+                    JOptionPane.showMessageDialog(null, "O minimo é 15", "Atenção", JOptionPane.ERROR_MESSAGE);
+                    return;
+                } else if (textAreaProblema.getText().length() > 255) {
+                    JOptionPane.showMessageDialog(null, "O maximo é 255", "Atenção", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+                
+
                 chamados.CriarChamados(patrimonio, textAreaProblema.getText(), usuario.idTecnico);
                 JOptionPane.showMessageDialog(null, "Chamado cadastrado com sucesso, por favor, aguarde um técnico.", "Atenção", JOptionPane.INFORMATION_MESSAGE);
                 telaChamado mainpage = new telaChamado();
                 mainpage.abrirTela();
                 dispose();
-                
+
             }
         });
-        btnVoltar.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e){
+
+        btnVoltar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
                 telaChamado mainpage = new telaChamado();
                 mainpage.abrirTela();
                 dispose();
-                
+
             }
         });
     }
@@ -122,9 +167,10 @@ public class abrirChamado extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-     public void abrirTela(){
-         new abrirChamado().setVisible(true);
-     }
+     public void abrirTela() {
+        new abrirChamado().setVisible(true);
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -159,8 +205,7 @@ public class abrirChamado extends javax.swing.JFrame {
             }
         });
     }
-    
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel JavaLogo;

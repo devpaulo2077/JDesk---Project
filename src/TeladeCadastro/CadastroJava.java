@@ -67,7 +67,7 @@ public class CadastroJava extends javax.swing.JFrame {
                 String Psenha = txtSenha.getText();
                 String Csenha = txtConfirmarSenha.getText();
                 usuario.setSenha(validasenha);
-                System.out.println("CPF FORMATADO AAAAAAAAAAAAAA "+ CPF.getText());
+                usuario.setData_nasc(txtDate.getText());
                 
                 if(usuario.getNome().length() <3){
                     JOptionPane.showMessageDialog(null, "Nome Inválido, Caracteres insuficientes!!", "Atenção", JOptionPane.ERROR_MESSAGE);
@@ -97,18 +97,16 @@ public class CadastroJava extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Cpf Inválido, caracteres insuficientes!!", "Atenção", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
-                
-                // ERROR 11/10/2024
-		/* else if( usuario.getData_nasc().length() <10){
+		 else if( usuario.getData_nasc().length() <10){
                     JOptionPane.showMessageDialog(null, "Data Inválida, caracteres insuficientes!! ", "Atenção", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
                 
-                else if( usuario.getData_nasc().length() > 10){;
+                else if( usuario.getData_nasc().length() > 10){
                     JOptionPane.showMessageDialog(null, "Data Inválida, Limite de Caracteres excedido!! ", "Atenção", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
-                */
+             
                     
                     
                 //usuario.setCpf(CPF.getText());
