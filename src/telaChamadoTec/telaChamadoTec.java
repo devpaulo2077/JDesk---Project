@@ -91,7 +91,7 @@ public class telaChamadoTec extends javax.swing.JFrame {
         txtUsuario.setForeground(new java.awt.Color(255, 0, 0));
         txtUsuario.setText("Úsuario");
         jPanel1.add(txtUsuario);
-        txtUsuario.setBounds(280, 140, 66, 25);
+        txtUsuario.setBounds(210, 170, 270, 25);
 
         btnChamado.setBackground(new java.awt.Color(204, 255, 255));
         btnChamado.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -102,7 +102,7 @@ public class telaChamadoTec extends javax.swing.JFrame {
         txtBemVindo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         txtBemVindo.setText("Bem vindo(a)");
         jPanel1.add(txtBemVindo);
-        txtBemVindo.setBounds(150, 140, 114, 25);
+        txtBemVindo.setBounds(190, 140, 115, 25);
 
         btnSeusChamados.setBackground(new java.awt.Color(255, 255, 204));
         btnSeusChamados.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N

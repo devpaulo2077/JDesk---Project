@@ -17,11 +17,15 @@ public class ConsultarChamados {
     public static void abrirTela() {
         Conexao banco = new Conexao();
         JFrame frame = new JFrame("Consultar Chamados");
+        frame.getContentPane().setBackground(Color.WHITE); // Fundo da aplicação branco
 
         try {
             banco.AbrirConexao();
             banco.stmt = banco.con.createStatement();
-            banco.resultset = banco.stmt.executeQuery("SELECT chamados.estatus, chamados.patri_equipamento, chamados.desc_problema FROM chamados WHERE chamados.estatus = 'aberto';");
+            banco.resultset = banco.stmt.executeQuery(
+                    "SELECT chamados.estatus, chamados.patri_equipamento, chamados.desc_problema " +
+                    "FROM chamados WHERE chamados.estatus = 'aberto';"
+            );
 
             ArrayList<String[]> dadosList = new ArrayList<>();
 
@@ -44,27 +48,34 @@ public class ConsultarChamados {
             };
 
             JTable tabela = new JTable(model);
+            tabela.setBackground(Color.WHITE); // Fundo das células branco
+            tabela.setFillsViewportHeight(true); // Expande o fundo até o fim do viewport
             tabela.getColumn("Ação").setCellRenderer(new ButtonRenderer());
             tabela.getColumn("Ação").setCellEditor(new ButtonEditor(new JCheckBox(), tabela));
 
             JScrollPane scrollPane = new JScrollPane(tabela);
+            scrollPane.getViewport().setBackground(Color.WHITE); // Fundo da área da tabela branco
 
             JButton btnVoltar = new JButton("Voltar");
+            btnVoltar.setFont(new Font("Arial", Font.BOLD, 14)); // Texto em negrito
+            btnVoltar.setBackground(new Color(173, 216, 230)); // Azul claro suave
+            btnVoltar.setOpaque(true);
+            btnVoltar.setBorderPainted(false);
             btnVoltar.addActionListener(e -> {
                 telaChamadoTec mainpage = new telaChamadoTec();
                 mainpage.abrirTela();
                 frame.dispose();
             });
 
-            JPanel panel = new JPanel();
-            panel.setLayout(new BorderLayout());
+            JPanel panel = new JPanel(new BorderLayout());
+            panel.setBackground(Color.WHITE); // Fundo branco
             panel.add(scrollPane, BorderLayout.CENTER);
             panel.add(btnVoltar, BorderLayout.SOUTH);
 
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.add(panel);
             frame.setSize(480, 400);
-            frame.setResizable(false);
+            frame.setResizable(true);
             frame.setVisible(true);
 
             banco.FecharConexao();
@@ -77,6 +88,10 @@ public class ConsultarChamados {
 class ButtonRenderer extends JButton implements TableCellRenderer {
     public ButtonRenderer() {
         setText("Aceitar");
+        setFont(new Font("Arial", Font.BOLD, 14)); // Texto em negrito
+        setBackground(new Color(144, 238, 144)); // Verde claro
+        setOpaque(true);
+        setBorderPainted(false);
     }
 
     @Override
@@ -93,14 +108,16 @@ class ButtonEditor extends DefaultCellEditor {
     public ButtonEditor(JCheckBox checkBox, JTable table) {
         super(checkBox);
         this.table = table;
-        button = new JButton();
+        button = new JButton("Aceitar");
+        button.setFont(new Font("Arial", Font.BOLD, 14)); // Texto em negrito
+        button.setBackground(new Color(144, 238, 144)); // Verde claro
         button.setOpaque(true);
+        button.setBorderPainted(false);
         button.addActionListener(e -> fireEditingStopped());
     }
 
     @Override
     public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
-        button.setText("Aceitar");
         isPushed = true;
         return button;
     }

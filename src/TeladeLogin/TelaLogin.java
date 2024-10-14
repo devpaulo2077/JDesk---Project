@@ -108,6 +108,7 @@ public class TelaLogin extends javax.swing.JFrame {
     private void initComponents() {
 
         jButton1 = new javax.swing.JButton();
+        jMenu1 = new javax.swing.JMenu();
         jPanel1 = new javax.swing.JPanel();
         txtEmail = new javax.swing.JLabel();
         emailJava = new javax.swing.JTextField();
@@ -119,6 +120,8 @@ public class TelaLogin extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         jButton1.setText("jButton1");
+
+        jMenu1.setText("jMenu1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Tela Login");
@@ -133,26 +136,28 @@ public class TelaLogin extends javax.swing.JFrame {
         jPanel1.add(txtEmail);
         txtEmail.setBounds(150, 110, 48, 22);
 
+        emailJava.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         emailJava.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 emailJavaActionPerformed(evt);
             }
         });
         jPanel1.add(emailJava);
-        emailJava.setBounds(150, 150, 258, 18);
+        emailJava.setBounds(150, 140, 260, 20);
 
+        senhaJava.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jPanel1.add(senhaJava);
-        senhaJava.setBounds(150, 200, 258, 18);
+        senhaJava.setBounds(150, 190, 260, 20);
 
         txtSenha.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         txtSenha.setText("Senha:");
         jPanel1.add(txtSenha);
-        txtSenha.setBounds(150, 180, 37, 16);
+        txtSenha.setBounds(150, 170, 37, 16);
 
         entrarJava.setBackground(new java.awt.Color(204, 255, 255));
         entrarJava.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         entrarJava.setText("Entrar");
-        entrarJava.setBorder(javax.swing.BorderFactory.createLineBorder(null));
+        entrarJava.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         entrarJava.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 entrarJavaActionPerformed(evt);
@@ -169,8 +174,9 @@ public class TelaLogin extends javax.swing.JFrame {
         cadastroJava.setBackground(new java.awt.Color(255, 255, 51));
         cadastroJava.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         cadastroJava.setText("Cadastrar");
+        cadastroJava.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jPanel1.add(cadastroJava);
-        cadastroJava.setBounds(220, 340, 100, 18);
+        cadastroJava.setBounds(220, 340, 100, 20);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icons8-logo-java-coffee-cup-144.png"))); // NOI18N
         jLabel1.setText("jLabel1");
@@ -248,6 +254,7 @@ public class TelaLogin extends javax.swing.JFrame {
     private javax.swing.JButton entrarJava;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField senhaJava;
     private javax.swing.JLabel txtEmail;
