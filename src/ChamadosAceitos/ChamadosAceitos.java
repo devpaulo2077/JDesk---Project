@@ -8,6 +8,7 @@ import java.awt.*;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import telaChamadoTec.telaChamadoTec;
+import classes.Usuario;
 
 public class ChamadosAceitos extends JFrame {
 
@@ -48,7 +49,7 @@ public class ChamadosAceitos extends JFrame {
 
         currentTable = new JTable(model); // Atribua a tabela à variável da classe
         currentTable.setBackground(Color.WHITE); // Fundo da tabela
-        currentTable.setGridColor(Color.LIGHT_GRAY); // Cor das linhas
+        currentTable.setGridColor(Color.LIGHT_GRAY); // Cor das linhas  
         currentTable.setShowGrid(true); // Mostra as linhas
 
         // Configura a cor do cabeçalho da tabela
@@ -62,29 +63,33 @@ public class ChamadosAceitos extends JFrame {
 
     }
 
-    private String[][] obterDadosChamadosAceitos() {
-        Conexao banco = new Conexao();
-        ArrayList<String[]> dadosList = new ArrayList<>();
-        try {
-            banco.AbrirConexao();
-            banco.stmt = banco.con.createStatement();
-            ResultSet resultSet = banco.stmt.executeQuery(
-                    "SELECT patri_equipamento, desc_problema, desc_acao FROM chamados WHERE estatus = 'aceito'"
-            );
-            while (resultSet.next()) {
-                String patrimonio = resultSet.getString("patri_equipamento");
-                String problema = resultSet.getString("desc_problema");
-                String acao = resultSet.getString("desc_acao");
-                dadosList.add(new String[]{patrimonio, problema, acao});
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro ao buscar chamados aceitos: " + e.getMessage());
-        } finally {
-            banco.FecharConexao();
+   private String[][] obterDadosChamadosAceitos() {
+    Conexao banco = new Conexao();
+    ArrayList<String[]> dadosList = new ArrayList<>();
+    try {
+        banco.AbrirConexao();
+        banco.stmt = banco.con.createStatement();
+        String sql ="SELECT patri_equipamento, desc_problema, desc_acao FROM chamados WHERE estatus = 'aceito' AND tecnico_id = '" + Usuario.idTecnico + "'";
+
+        ResultSet resultSet = banco.stmt.executeQuery(sql);
+        System.out.println(sql); 
+
+        while (resultSet.next()) {
+            String patrimonio = resultSet.getString("patri_equipamento");
+            String problema = resultSet.getString("desc_problema");
+            String acao = resultSet.getString("desc_acao");
+            dadosList.add(new String[]{patrimonio, problema, acao});
         }
-        String[][] dados = new String[dadosList.size()][3];
-        dadosList.toArray(dados);
-        return dados;
+        System.out.println("Chamados aceitos encontrados: " + dadosList.size()); // Log do tamanho da lista
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Erro ao buscar chamados aceitos: " + e.getMessage());
+    } finally {
+        banco.FecharConexao();
+    }
+
+    String[][] dados = new String[dadosList.size()][3];
+    dadosList.toArray(dados);
+    return dados;
     }
 
     public static void abrirTela() {
@@ -124,19 +129,16 @@ public class ChamadosAceitos extends JFrame {
         }
     }
 
-    // Editor para adicionar funcionalidade aos botões "Concluir" e "Cancelar"
     private class ActionButtonEditor extends AbstractCellEditor implements javax.swing.table.TableCellEditor {
 
         private final JPanel panel = new JPanel(new GridLayout(1, 2, 5, 5));
         private final JButton btnConcluir = new JButton("Concluir");
         private final JButton btnCancelar = new JButton("Cancelar");
-
-        // Adiciona uma variável para armazenar a tabela atual
+   
         private JTable currentTable;
 
-        // Modifica o construtor para receber a tabela
         public ActionButtonEditor(JTable currentTable) {
-            this.currentTable = currentTable; // Armazena a referência da tabela
+            this.currentTable = currentTable; 
             configurarBotoes();
         }
 
@@ -160,9 +162,9 @@ public class ChamadosAceitos extends JFrame {
             });
 
             btnCancelar.addActionListener(e -> {
-                int currentRow = currentTable.getSelectedRow(); // Obtém a linha selecionada da tabela atual
-                if (currentRow != -1) { // Verifica se alguma linha está selecionada
-                    String patrimonio = currentTable.getValueAt(currentRow, 0).toString(); // Captura o patrimônio da coluna correta
+                int currentRow = currentTable.getSelectedRow();
+                if (currentRow != -1) { 
+                    String patrimonio = currentTable.getValueAt(currentRow, 0).toString(); 
                     Conexao banco = new Conexao();
 
                     try {
@@ -187,7 +189,7 @@ public class ChamadosAceitos extends JFrame {
                     JOptionPane.showMessageDialog(null, "Selecione um chamado para cancelar.");
                 }
 
-                fireEditingStopped(); // Para parar a edição da célula
+                fireEditingStopped();
             });
 
             panel.add(btnConcluir);

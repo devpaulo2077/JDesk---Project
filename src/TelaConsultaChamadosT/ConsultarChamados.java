@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import classes.Conexao;
 import ChamadosAceitos.ChamadosAceitos;
 import telaChamadoTec.telaChamadoTec;
+import classes.Usuario;
 
 public class ConsultarChamados {
 
@@ -17,7 +18,7 @@ public class ConsultarChamados {
     public static void abrirTela() {
         Conexao banco = new Conexao();
         JFrame frame = new JFrame("Consultar Chamados");
-        frame.getContentPane().setBackground(Color.WHITE); // Fundo da aplicação branco
+        frame.getContentPane().setBackground(Color.WHITE); 
 
         try {
             banco.AbrirConexao();
@@ -48,17 +49,17 @@ public class ConsultarChamados {
             };
 
             JTable tabela = new JTable(model);
-            tabela.setBackground(Color.WHITE); // Fundo das células branco
-            tabela.setFillsViewportHeight(true); // Expande o fundo até o fim do viewport
+            tabela.setBackground(Color.WHITE); 
+            tabela.setFillsViewportHeight(true); 
             tabela.getColumn("Ação").setCellRenderer(new ButtonRenderer());
             tabela.getColumn("Ação").setCellEditor(new ButtonEditor(new JCheckBox(), tabela));
 
             JScrollPane scrollPane = new JScrollPane(tabela);
-            scrollPane.getViewport().setBackground(Color.WHITE); // Fundo da área da tabela branco
+            scrollPane.getViewport().setBackground(Color.WHITE);
 
             JButton btnVoltar = new JButton("Voltar");
-            btnVoltar.setFont(new Font("Arial", Font.BOLD, 14)); // Texto em negrito
-            btnVoltar.setBackground(new Color(173, 216, 230)); // Azul claro suave
+            btnVoltar.setFont(new Font("Arial", Font.BOLD, 14));
+            btnVoltar.setBackground(new Color(173, 216, 230));
             btnVoltar.setOpaque(true);
             btnVoltar.setBorderPainted(false);
             btnVoltar.addActionListener(e -> {
@@ -68,7 +69,7 @@ public class ConsultarChamados {
             });
 
             JPanel panel = new JPanel(new BorderLayout());
-            panel.setBackground(Color.WHITE); // Fundo branco
+            panel.setBackground(Color.WHITE);
             panel.add(scrollPane, BorderLayout.CENTER);
             panel.add(btnVoltar, BorderLayout.SOUTH);
 
@@ -88,8 +89,8 @@ public class ConsultarChamados {
 class ButtonRenderer extends JButton implements TableCellRenderer {
     public ButtonRenderer() {
         setText("Aceitar");
-        setFont(new Font("Arial", Font.BOLD, 14)); // Texto em negrito
-        setBackground(new Color(144, 238, 144)); // Verde claro
+        setFont(new Font("Arial", Font.BOLD, 14));
+        setBackground(new Color(144, 238, 144));
         setOpaque(true);
         setBorderPainted(false);
     }
@@ -109,8 +110,8 @@ class ButtonEditor extends DefaultCellEditor {
         super(checkBox);
         this.table = table;
         button = new JButton("Aceitar");
-        button.setFont(new Font("Arial", Font.BOLD, 14)); // Texto em negrito
-        button.setBackground(new Color(144, 238, 144)); // Verde claro
+        button.setFont(new Font("Arial", Font.BOLD, 14));
+        button.setBackground(new Color(144, 238, 144)); 
         button.setOpaque(true);
         button.setBorderPainted(false);
         button.addActionListener(e -> fireEditingStopped());
@@ -129,7 +130,7 @@ class ButtonEditor extends DefaultCellEditor {
             String patrimonio = table.getValueAt(selectedRow, 0).toString();
             aceitarChamado(patrimonio);
             JOptionPane.showMessageDialog(button, "Chamado de patrimônio " + patrimonio + " foi aceito!");
-            SwingUtilities.getWindowAncestor(button).dispose(); // Fecha a tela atual
+            SwingUtilities.getWindowAncestor(button).dispose();
             ChamadosAceitos.abrirTela();
         }
         isPushed = false;
@@ -147,7 +148,7 @@ class ButtonEditor extends DefaultCellEditor {
         try {
             banco.AbrirConexao();
             banco.stmt = banco.con.createStatement();
-            String sql = "UPDATE chamados SET estatus = 'Aceito' WHERE patri_equipamento = '" + patrimonio + "'";
+            String sql = "UPDATE chamados SET estatus = 'Aceito', tecnico_id = '" + Usuario.idTecnico + "' WHERE patri_equipamento = '" + patrimonio + "'";
             banco.stmt.executeUpdate(sql);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(button, "Erro ao aceitar o chamado: " + e.getMessage());
