@@ -301,13 +301,13 @@ public class CadastroJava extends javax.swing.JFrame {
         jPanel1.add(btnNao);
         btnNao.setBounds(400, 320, 45, 21);
 
-        btnCadastrar.setBackground(new java.awt.Color(204, 204, 255));
+        btnCadastrar.setBackground(new java.awt.Color(244,68,52));
         btnCadastrar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnCadastrar.setText("CADASTRAR");
         jPanel1.add(btnCadastrar);
         btnCadastrar.setBounds(320, 390, 130, 40);
 
-        btnVoltar.setBackground(new java.awt.Color(255, 204, 102));
+        btnVoltar.setBackground(new java.awt.Color(37,150,190));
         btnVoltar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnVoltar.setText("VOLTAR");
         jPanel1.add(btnVoltar);

@@ -22,6 +22,8 @@ public class telaChamado extends javax.swing.JFrame {
      */
     public telaChamado() {
         initComponents();
+        txtUsuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
         txtUsuario.setText(Usuario.usuarioSistema);
         btnVoltar.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
@@ -62,6 +64,7 @@ public class telaChamado extends javax.swing.JFrame {
         btnChamado = new javax.swing.JButton();
         txtBemVindo = new javax.swing.JLabel();
         btnSeusChamados = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(490, 420));
@@ -72,38 +75,46 @@ public class telaChamado extends javax.swing.JFrame {
         jPanel1.setLayout(null);
 
         btnVoltar.setBackground(new java.awt.Color(255, 153, 153));
-        btnVoltar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnVoltar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnVoltar.setText("VOLTAR");
         jPanel1.add(btnVoltar);
-        btnVoltar.setBounds(190, 330, 110, 20);
+        btnVoltar.setBounds(10, 10, 90, 20);
 
         javaLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icons8-logo-java-coffee-cup-144.png"))); // NOI18N
         jPanel1.add(javaLogo);
-        javaLogo.setBounds(180, 10, 130, 120);
+        javaLogo.setBounds(180, 0, 130, 120);
 
         txtUsuario.setBackground(new java.awt.Color(255, 0, 0));
         txtUsuario.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         txtUsuario.setForeground(new java.awt.Color(255, 0, 0));
         txtUsuario.setText("Úsuario");
+        txtUsuario.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jPanel1.add(txtUsuario);
-        txtUsuario.setBounds(280, 140, 65, 25);
+        txtUsuario.setBounds(110, 190, 280, 25);
 
-        btnChamado.setBackground(new java.awt.Color(204, 255, 255));
-        btnChamado.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnChamado.setBackground(new java.awt.Color(244, 68, 52));
+        btnChamado.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnChamado.setText("ABRIR CHAMADO");
+        btnChamado.setBorder(null);
         jPanel1.add(btnChamado);
-        btnChamado.setBounds(170, 210, 160, 23);
+        btnChamado.setBounds(20, 260, 210, 40);
 
         txtBemVindo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        txtBemVindo.setText("Bem vindo(A)");
+        txtBemVindo.setText("Bem-vindo(a)");
         jPanel1.add(txtBemVindo);
-        txtBemVindo.setBounds(150, 140, 118, 25);
+        txtBemVindo.setBounds(190, 150, 130, 25);
 
-        btnSeusChamados.setBackground(new java.awt.Color(255, 255, 204));
-        btnSeusChamados.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnSeusChamados.setBackground(new java.awt.Color(37, 150, 190));
+        btnSeusChamados.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnSeusChamados.setText("SEUS CHAMADOS");
+        btnSeusChamados.setBorder(null);
         jPanel1.add(btnSeusChamados);
-        btnSeusChamados.setBounds(170, 260, 160, 23);
+        btnSeusChamados.setBounds(250, 260, 210, 40);
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel1.setText("Abra um chamado para um técnico resolve-lo!");
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(90, 340, 320, 20);
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 480, 400);
@@ -157,6 +168,7 @@ public class telaChamado extends javax.swing.JFrame {
     private javax.swing.JButton btnChamado;
     private javax.swing.JButton btnSeusChamados;
     private javax.swing.JButton btnVoltar;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel javaLogo;
     private javax.swing.JLabel txtBemVindo;
