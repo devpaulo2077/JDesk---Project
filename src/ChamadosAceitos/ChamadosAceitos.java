@@ -9,9 +9,10 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import telaChamadoTec.telaChamadoTec;
 import classes.Usuario;
+import serviçoRealizado.serviçoRealizado;
 
 public class ChamadosAceitos extends JFrame {
-
+    public static String patrimonio;
     private JTable currentTable;
 
     public ChamadosAceitos() {
@@ -157,7 +158,14 @@ public class ChamadosAceitos extends JFrame {
             btnCancelar.setForeground(Color.WHITE);
 
             btnConcluir.addActionListener(e -> {
-                JOptionPane.showMessageDialog(null, "Chamado Concluído!");
+                int currentRow = currentTable.getSelectedRow();
+                if (currentRow != -1) { 
+                    patrimonio = currentTable.getValueAt(currentRow, 0).toString(); 
+                    Conexao banco = new Conexao();
+                    serviçoRealizado sr = new serviçoRealizado();
+                    dispose();
+                    sr.abrirTela();
+                }
                 fireEditingStopped();
             });
 

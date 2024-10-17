@@ -3,12 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Projetos/Jdesk/JDesk/src/classes/Usuario.java</file>
-            <file>file:/C:/Projetos/Jdesk/JDesk/src/ChamadosAceitos/ChamadosAceitos.java</file>
-            <file>file:/C:/Projetos/Jdesk/JDesk/src/TelaConsultaChamadosT/ConsultarChamados.java</file>
-            <file>file:/C:/Projetos/Jdesk/JDesk/src/telaChamadoTec/telaChamadoTec.java</file>
-            <file>file:/C:/Projetos/Jdesk/JDesk/src/TeladeLogin/TelaLogin.java</file>
-            <file>file:/C:/Projetos/Jdesk/JDesk/src/MeusChamadosTecnico/NewJFrame.java</file>
+            <file>file:/C:/Users/alexandre.vsantana/OneDrive%20-%20SENAC%20-%20SP/Documentos/JDESK/JDesk/src/EditaFuncionario/editarChamado.java</file>
+            <file>file:/C:/Users/alexandre.vsantana/OneDrive%20-%20SENAC%20-%20SP/Documentos/JDESK/JDesk/src/MeusChamadosFuncionario/MeusChamadosF.java</file>
+            <file>file:/C:/Users/alexandre.vsantana/OneDrive%20-%20SENAC%20-%20SP/Documentos/JDESK/JDesk/src/MeusChamadosTecnico/Chamado.java</file>
+            <file>file:/C:/Users/alexandre.vsantana/OneDrive%20-%20SENAC%20-%20SP/Documentos/JDESK/JDesk/src/MeusChamadosTecnico/NewJFrame.java</file>
         </group>
     </open-files>
 </project-private>
