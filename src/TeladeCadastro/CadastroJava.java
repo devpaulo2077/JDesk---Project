@@ -70,7 +70,7 @@ public class CadastroJava extends javax.swing.JFrame {
                 usuario.setData_nasc(txtDate.getText());
                 
                 if(usuario.getNome().length() <3){
-                    JOptionPane.showMessageDialog(null, "Nome Inválido, Caracteres insuficientes!!", "Atenção", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Nome Inválido, Mínimo 3 caracteres!!", "Atenção", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
                 else if(usuario.getNome().length() >255){
@@ -78,7 +78,7 @@ public class CadastroJava extends javax.swing.JFrame {
                     return;
                 }
 		else if(usuario.getEmail().length() <12){
-                    JOptionPane.showMessageDialog(null, "Email Inválido, caracteres insuficientes!!", "Atenção", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Email Inválido,  Mínimo 12 caracteres!!", "Atenção", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
                 else if(usuario.getEmail().length() >40){
@@ -86,7 +86,7 @@ public class CadastroJava extends javax.swing.JFrame {
                     return;
                 }
 		 else if(Psenha.length() <6){
-                    JOptionPane.showMessageDialog(null, "Senha Inválida, caracteres insuficientes!!", "Atenção", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Senha Inválida,  Mínimo 6 caracteres!!", "Atenção", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
                 else if(Psenha.length() >12){
@@ -94,11 +94,11 @@ public class CadastroJava extends javax.swing.JFrame {
                     return;
                 }
 		else if(CPF.getText().length() < 14){
-                    JOptionPane.showMessageDialog(null, "Cpf Inválido, caracteres insuficientes!!", "Atenção", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Cpf Inválido,  Mínimo 14 caracteres!!", "Atenção", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
 		 else if( usuario.getData_nasc().length() <10){
-                    JOptionPane.showMessageDialog(null, "Data Inválida, caracteres insuficientes!! ", "Atenção", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Data Inválida,  Mínimo 10 Caracteres!! ", "Atenção", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
                 
@@ -155,7 +155,7 @@ public class CadastroJava extends javax.swing.JFrame {
                         System.out.println("Campo cpf: " + CPF.getText());
                         System.out.println("Campo data de nascimento: " + usuario.getData_nasc());
                         System.out.println("Campo status: " + usuario.getTipo());
-                        JOptionPane.showMessageDialog(null, "Erro ao cadastrar, dados nulos!!!", "Atenção", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Erro ao cadastrar, Campo deve ser preenchido!!!", "Atenção", JOptionPane.ERROR_MESSAGE);
                     }
                      else {
                         
