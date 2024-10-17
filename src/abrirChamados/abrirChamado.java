@@ -112,6 +112,7 @@ public class abrirChamado extends javax.swing.JFrame {
         textAreaPatri = new javax.swing.JFormattedTextField();
         btnVoltar = new javax.swing.JButton();
         btnCriar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(490, 420));
@@ -130,29 +131,37 @@ public class abrirChamado extends javax.swing.JFrame {
         jPanel1.add(JavaLogo);
         JavaLogo.setBounds(170, 80, 130, 120);
 
-        txtProblema.setText("Problema");
+        txtProblema.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtProblema.setText("Problema:");
         jPanel1.add(txtProblema);
-        txtProblema.setBounds(110, 270, 70, 16);
+        txtProblema.setBounds(110, 270, 70, 20);
 
-        txtPatri.setText("Patrimônio");
+        txtPatri.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtPatri.setText("Patrimônio:");
         jPanel1.add(txtPatri);
-        txtPatri.setBounds(110, 210, 60, 16);
+        txtPatri.setBounds(110, 210, 80, 20);
         jPanel1.add(textAreaProblema);
-        textAreaProblema.setBounds(110, 290, 270, 22);
+        textAreaProblema.setBounds(110, 290, 270, 30);
         jPanel1.add(textAreaPatri);
-        textAreaPatri.setBounds(110, 230, 270, 22);
+        textAreaPatri.setBounds(110, 230, 270, 30);
 
-        btnVoltar.setBackground(new java.awt.Color(204, 255, 255));
-        btnVoltar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnVoltar.setBackground(new java.awt.Color(255, 204, 204));
+        btnVoltar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnVoltar.setText("VOLTAR");
+        btnVoltar.setBorder(null);
         jPanel1.add(btnVoltar);
-        btnVoltar.setBounds(210, 380, 80, 23);
+        btnVoltar.setBounds(10, 10, 110, 20);
 
-        btnCriar.setBackground(new java.awt.Color(255, 255, 204));
-        btnCriar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnCriar.setBackground(new java.awt.Color(244, 68, 52));
+        btnCriar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnCriar.setText("CRIAR");
         jPanel1.add(btnCriar);
-        btnCriar.setBounds(210, 340, 80, 23);
+        btnCriar.setBounds(170, 340, 150, 30);
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel1.setText("Crie um chamado apartir do seu problema!");
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(100, 390, 300, 20);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -211,6 +220,7 @@ public class abrirChamado extends javax.swing.JFrame {
     private javax.swing.JLabel JavaLogo;
     private javax.swing.JButton btnCriar;
     private javax.swing.JButton btnVoltar;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JFormattedTextField textAreaPatri;
     private javax.swing.JFormattedTextField textAreaProblema;

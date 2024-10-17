@@ -20,14 +20,20 @@ public class ChamadosAceitos extends JFrame {
         setSize(600, 400);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
+        // Fundo branco para o JFrame
+        getContentPane().setBackground(Color.WHITE);
+
         JPanel panel = new JPanel(new BorderLayout());
+        panel.setBackground(Color.WHITE); // Fundo branco do painel
+
         JTable tabelaChamados = criarTabelaChamadosAceitos();
         JScrollPane scrollPane = new JScrollPane(tabelaChamados);
+        scrollPane.getViewport().setBackground(Color.WHITE); // Fundo do viewport
 
         // Botão "Voltar" com estilização
         JButton btnVoltar = new JButton("Voltar");
-        btnVoltar.setFont(new Font("Arial", Font.BOLD, 14)); // Texto em negrito
-        btnVoltar.setBackground(new Color(173, 216, 230)); // Azul claro suave
+        btnVoltar.setFont(new Font("Arial", Font.BOLD, 14));
+        btnVoltar.setBackground(new Color(173, 216, 230));
         btnVoltar.setForeground(Color.BLACK);
 
         btnVoltar.addActionListener(e -> {
@@ -38,8 +44,8 @@ public class ChamadosAceitos extends JFrame {
 
         panel.add(scrollPane, BorderLayout.CENTER);
         panel.add(btnVoltar, BorderLayout.SOUTH);
-        add(panel);
 
+        add(panel);
         setVisible(true);
     }
 
@@ -48,58 +54,54 @@ public class ChamadosAceitos extends JFrame {
         String[][] dados = obterDadosChamadosAceitos();
         DefaultTableModel model = new DefaultTableModel(dados, colunas);
 
-        currentTable = new JTable(model); // Atribua a tabela à variável da classe
-        currentTable.setBackground(Color.WHITE); // Fundo da tabela
-        currentTable.setGridColor(Color.LIGHT_GRAY); // Cor das linhas  
-        currentTable.setShowGrid(true); // Mostra as linhas
+        currentTable = new JTable(model);
 
-        // Configura a cor do cabeçalho da tabela
+        // Configuração da JTable e cabeçalho
+        currentTable.setBackground(Color.WHITE);
+        currentTable.setGridColor(Color.LIGHT_GRAY);
+        currentTable.setShowGrid(true);
         currentTable.getTableHeader().setBackground(Color.WHITE);
         currentTable.getTableHeader().setForeground(Color.BLACK);
 
+        // Renderizador e editor de botões
         currentTable.getColumnModel().getColumn(2).setCellRenderer(new ActionButtonRenderer());
-        currentTable.getColumnModel().getColumn(2).setCellEditor(new ActionButtonEditor(currentTable)); // Passe a referência da tabela
+        currentTable.getColumnModel().getColumn(2).setCellEditor(new ActionButtonEditor(currentTable));
 
-        return currentTable; // Retorne a tabela
-
+        return currentTable;
     }
 
-   private String[][] obterDadosChamadosAceitos() {
-    Conexao banco = new Conexao();
-    ArrayList<String[]> dadosList = new ArrayList<>();
-    try {
-        banco.AbrirConexao();
-        banco.stmt = banco.con.createStatement();
-        String sql ="SELECT patri_equipamento, desc_problema, desc_acao FROM chamados WHERE estatus = 'aceito' AND tecnico_id = '" + Usuario.idTecnico + "'";
+    private String[][] obterDadosChamadosAceitos() {
+        Conexao banco = new Conexao();
+        ArrayList<String[]> dadosList = new ArrayList<>();
 
-        ResultSet resultSet = banco.stmt.executeQuery(sql);
-        System.out.println(sql); 
+        try {
+            banco.AbrirConexao();
+            banco.stmt = banco.con.createStatement();
+            String sql = "SELECT patri_equipamento, desc_problema, desc_acao FROM chamados WHERE estatus = 'aceito' AND tecnico_id = '" + Usuario.idTecnico + "'";
+            ResultSet resultSet = banco.stmt.executeQuery(sql);
 
-        while (resultSet.next()) {
-            String patrimonio = resultSet.getString("patri_equipamento");
-            String problema = resultSet.getString("desc_problema");
-            String acao = resultSet.getString("desc_acao");
-            dadosList.add(new String[]{patrimonio, problema, acao});
+            while (resultSet.next()) {
+                String patrimonio = resultSet.getString("patri_equipamento");
+                String problema = resultSet.getString("desc_problema");
+                String acao = resultSet.getString("desc_acao");
+                dadosList.add(new String[]{patrimonio, problema, acao});
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro ao buscar chamados aceitos: " + e.getMessage());
+        } finally {
+            banco.FecharConexao();
         }
-        System.out.println("Chamados aceitos encontrados: " + dadosList.size()); // Log do tamanho da lista
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(null, "Erro ao buscar chamados aceitos: " + e.getMessage());
-    } finally {
-        banco.FecharConexao();
-    }
 
-    String[][] dados = new String[dadosList.size()][3];
-    dadosList.toArray(dados);
-    return dados;
+        String[][] dados = new String[dadosList.size()][3];
+        dadosList.toArray(dados);
+        return dados;
     }
 
     public static void abrirTela() {
         new ChamadosAceitos();
     }
 
-    // Renderer para exibir os botões "Concluir" e "Cancelar"
     private class ActionButtonRenderer extends JPanel implements TableCellRenderer {
-
         private final JButton btnConcluir = new JButton("Concluir");
         private final JButton btnCancelar = new JButton("Cancelar");
 
@@ -109,14 +111,11 @@ public class ChamadosAceitos extends JFrame {
         }
 
         private void configurarBotoes() {
-            Font fonteNegrito = new Font("Arial", Font.BOLD, 12);
-
-            // Estilização dos botões
-            btnConcluir.setFont(fonteNegrito);
+            btnConcluir.setFont(new Font("Arial", Font.BOLD, 12));
             btnConcluir.setBackground(Color.GREEN);
             btnConcluir.setForeground(Color.WHITE);
 
-            btnCancelar.setFont(fonteNegrito);
+            btnCancelar.setFont(new Font("Arial", Font.BOLD, 12));
             btnCancelar.setBackground(Color.RED);
             btnCancelar.setForeground(Color.WHITE);
 
@@ -131,29 +130,20 @@ public class ChamadosAceitos extends JFrame {
     }
 
     private class ActionButtonEditor extends AbstractCellEditor implements javax.swing.table.TableCellEditor {
-
         private final JPanel panel = new JPanel(new GridLayout(1, 2, 5, 5));
         private final JButton btnConcluir = new JButton("Concluir");
         private final JButton btnCancelar = new JButton("Cancelar");
-   
-        private JTable currentTable;
 
         public ActionButtonEditor(JTable currentTable) {
-            this.currentTable = currentTable; 
             configurarBotoes();
         }
 
         private void configurarBotoes() {
-            Font fonteNegrito = new Font("Arial", Font.BOLD, 12);
-
-            // Estilização dos botões
-            btnConcluir.setFont(fonteNegrito);
+            btnConcluir.setFont(new Font("Arial", Font.BOLD, 12));
             btnConcluir.setBackground(Color.GREEN);
-            getContentPane().setBackground(Color.WHITE);
+            btnConcluir.setForeground(Color.WHITE);
 
-            panel.setBackground(Color.WHITE);
-
-            btnCancelar.setFont(fonteNegrito);
+            btnCancelar.setFont(new Font("Arial", Font.BOLD, 12));
             btnCancelar.setBackground(Color.RED);
             btnCancelar.setForeground(Color.WHITE);
 
@@ -170,33 +160,7 @@ public class ChamadosAceitos extends JFrame {
             });
 
             btnCancelar.addActionListener(e -> {
-                int currentRow = currentTable.getSelectedRow();
-                if (currentRow != -1) { 
-                    String patrimonio = currentTable.getValueAt(currentRow, 0).toString(); 
-                    Conexao banco = new Conexao();
-
-                    try {
-                        banco.AbrirConexao();
-                        banco.stmt = banco.con.createStatement();
-                        int resultado = banco.stmt.executeUpdate(
-                                "UPDATE chamados SET estatus = 'aberto' WHERE patri_equipamento = '" + patrimonio + "'"
-                        );
-                        if (resultado > 0) {
-                            JOptionPane.showMessageDialog(null, "Chamado cancelado com sucesso!");
-                                dispose();
-                                abrirTela();
-                        } else {
-                            JOptionPane.showMessageDialog(null, "Erro ao cancelar o chamado.");
-                        }
-                    } catch (Exception ex) {
-                        JOptionPane.showMessageDialog(null, "Erro ao cancelar chamado: " + ex.getMessage());
-                    } finally {
-                        banco.FecharConexao();
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(null, "Selecione um chamado para cancelar.");
-                }
-
+                JOptionPane.showMessageDialog(null, "Chamado Cancelado!");
                 fireEditingStopped();
             });
 

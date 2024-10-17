@@ -131,10 +131,10 @@ public class TelaLogin extends javax.swing.JFrame {
         jPanel1.setMinimumSize(new java.awt.Dimension(500, 350));
         jPanel1.setLayout(null);
 
-        txtEmail.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txtEmail.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         txtEmail.setText("E-mail:");
         jPanel1.add(txtEmail);
-        txtEmail.setBounds(150, 110, 48, 22);
+        txtEmail.setBounds(150, 150, 48, 22);
 
         emailJava.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         emailJava.addActionListener(new java.awt.event.ActionListener() {
@@ -143,45 +143,46 @@ public class TelaLogin extends javax.swing.JFrame {
             }
         });
         jPanel1.add(emailJava);
-        emailJava.setBounds(150, 140, 260, 20);
+        emailJava.setBounds(150, 180, 260, 30);
 
         senhaJava.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jPanel1.add(senhaJava);
-        senhaJava.setBounds(150, 190, 260, 20);
+        senhaJava.setBounds(150, 250, 260, 30);
 
-        txtSenha.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txtSenha.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         txtSenha.setText("Senha:");
         jPanel1.add(txtSenha);
-        txtSenha.setBounds(150, 170, 37, 16);
+        txtSenha.setBounds(150, 220, 80, 20);
 
-        entrarJava.setBackground(new java.awt.Color(204, 255, 255));
-        entrarJava.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        entrarJava.setBackground(new java.awt.Color(244, 68, 52));
+        entrarJava.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         entrarJava.setText("Entrar");
-        entrarJava.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        entrarJava.setBorder(null);
         entrarJava.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 entrarJavaActionPerformed(evt);
             }
         });
         jPanel1.add(entrarJava);
-        entrarJava.setBounds(210, 240, 120, 34);
+        entrarJava.setBounds(190, 300, 180, 34);
 
-        bemvindoJava.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        bemvindoJava.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        bemvindoJava.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         bemvindoJava.setText("Bem vindo usuario faça login com sua conta ou cadastra-se!");
         jPanel1.add(bemvindoJava);
-        bemvindoJava.setBounds(110, 310, 340, 16);
+        bemvindoJava.setBounds(80, 360, 420, 20);
 
-        cadastroJava.setBackground(new java.awt.Color(255, 255, 51));
-        cadastroJava.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        cadastroJava.setBackground(new java.awt.Color(37, 150, 190));
+        cadastroJava.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         cadastroJava.setText("Cadastrar");
-        cadastroJava.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        cadastroJava.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jPanel1.add(cadastroJava);
-        cadastroJava.setBounds(220, 340, 100, 20);
+        cadastroJava.setBounds(220, 400, 120, 30);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icons8-logo-java-coffee-cup-144.png"))); // NOI18N
         jLabel1.setText("jLabel1");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(210, 0, 120, 130);
+        jLabel1.setBounds(210, 10, 120, 130);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
