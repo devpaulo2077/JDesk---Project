@@ -24,6 +24,8 @@ public class editarChamado extends javax.swing.JFrame {
     /**
      * Creates new form abrirChamado
      */
+    private String patrimonio;
+    private String problema;
     public editarChamado() {
         initComponents();
         

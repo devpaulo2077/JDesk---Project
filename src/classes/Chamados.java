@@ -1,4 +1,6 @@
 package classes;
+import javax.swing.JOptionPane;
+
 public class Chamados {
     private String estatus;
     private String patrimonio;
@@ -64,6 +66,20 @@ public class Chamados {
         return resultChamados;
     }
     
-    
+    public void deletarChamado(String patrimonio) {
+        Conexao banco = new Conexao();
+        try {
+            banco.AbrirConexao();
+            String query = "UPDATE chamados SET estatus = 'D' WHERE patri_equipamento = '" + patrimonio + "'";
+            banco.stmt = banco.con.createStatement();
+            banco.stmt.executeUpdate(query);
+
+            JOptionPane.showMessageDialog(null, "Chamado deletado com sucesso!");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro ao deletar chamado: " + e.getMessage());
+        } finally {
+            banco.FecharConexao();
+        }
+    }
    
 }
