@@ -19,7 +19,7 @@ public class ChamadosAceitos extends JFrame {
         setTitle("Chamados Aceitos");
         setSize(600, 400);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-
+         setLocation(680, 280);
         // Fundo branco para o JFrame
         getContentPane().setBackground(Color.WHITE);
 

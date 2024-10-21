@@ -92,6 +92,7 @@ public class serviçoRealizado extends javax.swing.JFrame {
         jPasswordField1.setText("jPasswordField1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(690, 300));
         setMinimumSize(new java.awt.Dimension(520, 450));
         setResizable(false);
 

@@ -72,6 +72,7 @@ public class telaChamadoTec extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(680, 280));
         setMinimumSize(new java.awt.Dimension(490, 420));
         setResizable(false);
         getContentPane().setLayout(null);

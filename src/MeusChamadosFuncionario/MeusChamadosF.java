@@ -19,7 +19,7 @@ public class MeusChamadosF extends JFrame {
         setTitle("Chamados Aceitos");
         setSize(500, 300);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-
+         setLocation(680, 280);
         JPanel panel = new JPanel(new BorderLayout());
         JTable tabelaChamados = criarTabelaMeusChamados();
         JScrollPane scrollPane = new JScrollPane(tabelaChamados);

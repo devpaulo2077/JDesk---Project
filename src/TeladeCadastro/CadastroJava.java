@@ -51,7 +51,7 @@ public class CadastroJava extends javax.swing.JFrame {
      * Creates new form telaCadastro
      */
     public CadastroJava() {
-        initComponents();
+ setLocation(680, 280);        initComponents();
           setResizable(false);
     
         
